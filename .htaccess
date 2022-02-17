@@ -1,4 +1,0 @@
-RewriteCond %{HTTP_HOST} ^angpamilyamuna.com$ [NC,OR]
-#RewriteCond %{HTTP_HOST} ^www.your-domain.com$
-RewriteCond %{REQUEST_URI} !public_html/public/
-RewriteRule (.*) /public_html/public/$1 [L]
