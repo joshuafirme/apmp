@@ -58,7 +58,7 @@
 
   /**
    * Countdown timer
-   */
+  
   let countdown = select('.countdown');
   const output = countdown.innerHTML;
 
@@ -74,5 +74,5 @@
   }
   countDownDate();
   setInterval(countDownDate, 1000);
-
+ */
 })()

@@ -41,7 +41,8 @@
 
       <div class="subscribe" style="margin-bottom: 309px;">
         <h4>Subscribe now to get the latest updates!</h4>
-        <form action="forms/notify.php" method="post" role="form" class="php-email-form">
+        <form action="{{route('sendMail')}}" method="post" role="form" class="php-email-form">
+            @csrf
           <div class="subscribe-form">
             <input type="email" name="email"><input type="submit" value="Subscribe">
           </div>
@@ -73,6 +74,12 @@
   </footer><!-- End #footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{asset('assets/js/main.js')}}"></script>
 
 </body>
 
