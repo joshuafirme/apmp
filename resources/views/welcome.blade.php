@@ -21,6 +21,6 @@
         </style>
     </head>
     <body class="antialiased">
-        <img src="{{ asset('public/img/1.jpg') }}" alt="">
+        <img src="{{ asset('img/1.jpg') }}" alt="">
     </body>
 </html>
