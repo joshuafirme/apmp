@@ -21,6 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
+        <a href="{{ url('/login') }}">Click to login</a><br>
         <img src="{{ asset('img/1.jpg') }}" alt="">
     </body>
 </html>
