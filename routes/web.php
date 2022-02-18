@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [AuthController::class, 'login_view']);
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
+
+Route::get('/admin/login', [AuthController::class, 'admin_login_view']);
+Route::post('/admin/do-login', [AuthController::class, 'doLogin'])->name('doLogin');
+Route::get('/logout', [AuthController::class, 'logout']);
+
 Route::post('/send-mail', [SubscriptionController::class, 'sendMail'])->name('sendMail');
 Route::get('/subscription/confirm', [SubscriptionController::class, 'confirmSubscription']);
