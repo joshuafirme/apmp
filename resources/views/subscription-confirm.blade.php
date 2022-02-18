@@ -34,26 +34,13 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center" style="">
-    <div class="container d-flex flex-column align-items-center" style="margin-top: 150px">
+    <div class="container d-flex flex-column align-items-center" style="margin-top: 209px">
 
       <h1>Our website is coming soon...</h1>
       <h2>We're working hard to create our website.</h2>
 
-      <div class="subscribe" style="margin-bottom: 309px;">
-        <h4>Subscribe now to get the latest updates!</h4>
-        <form action="{{route('sendMail')}}" method="post" role="form" class="php-email-form">
-            @csrf
-          <div class="subscribe-form">
-            <input type="email" name="email"><input type="submit" value="Subscribe">
-          </div>
-          <div class="mt-2">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your notification request was sent. Thank you!</div>
-          </div>
-        </form>
-        
-        @include('includes.alerts')
+      <div style="margin-bottom: 309px;">
+        <p class="text-center {{$type}}">{{$message}}</p>
       </div>
 
   <!--    <div class="social-links text-center">

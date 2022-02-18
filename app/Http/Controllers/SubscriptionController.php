@@ -3,23 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Mail;
-use App\Mail\Mailer;
+use App\Models\Subscription;
+use Utils;
 
 class SubscriptionController extends Controller
 {
     public function sendMail() {
-        
+  
         $email = request()->email;
 
         if ($email) {
-            $subject = "test subject";
-            $html = "test";
-
-            Mail::to($email)->send(new Mailer($subject, $html));
+            if (Utils::isEmailExists($email)) {
+                return redirect()->back()->with('danger', 'Email is already exists.');
+            }
+            $mail_type = 'confirm_subscription';
+            Utils::sendMail($email, $mail_type);
     
-            return json_encode(array("response" => "email_sent"));
+            return redirect()->back()->with('success', 'We sent an confimation to your email.');
         }
-        return json_encode(array("response" => "email_required"));
+        return redirect()->back()->with('danger', 'Please enter your email.');
     }
+
+    public function confirmSubscription() {
+
+        $key = request()->key;
+
+        $s = new Subscription;
+        
+        if ($s->validateSubscription($key)) {
+            $type = 'text-success';
+            if ($s->isSubscribed($key)) {
+                $message = "It looks like you've already confirmed your subscription. No further action is required.";
+                
+                return view('subscription-confirm', compact('message', 'type'));
+            }
+            
+            Subscription::where('key', $key)->update([ 'status' => 1 ]);
+            $message = "Subscription was success";
+            return view('subscription-confirm', compact('message', 'type'));
+        }
+        $type = 'text-danger';
+        $message = "Subscription key is invalid.";
+        return view('subscription-confirm', compact('message', 'type'));
+    }
+
 }

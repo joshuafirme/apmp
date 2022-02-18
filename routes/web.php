@@ -21,3 +21,4 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'login_view']);
 Route::post('/send-mail', [SubscriptionController::class, 'sendMail'])->name('sendMail');
+Route::get('/subscription/confirm', [SubscriptionController::class, 'confirmSubscription']);
