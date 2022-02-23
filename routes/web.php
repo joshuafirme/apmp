@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\GeneralSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,13 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::resource('/users', UserController::class);
+    Route::post('/user/update/{id}', [UserController::class, 'update']);
+    Route::get('/user/search', [UserController::class, 'search'])->name('searchUser');
+
+    Route::get('/general-settings', [GeneralSettingsController::class, 'index']);
+
+    Route::get('/subscriber/list', [SubscriptionController::class, 'index']);
 });
 
 Route::get('/admin/login', [AuthController::class, 'admin_login_view']);

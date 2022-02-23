@@ -23,7 +23,6 @@
   <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
   <link href="{{asset('assets/vendor/quill/quill.snow.css')}}" rel="stylesheet">
   <link href="{{asset('assets/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
   @if (strpos($page_title, 'Admin') !== false) 
   @endif
 
@@ -39,6 +38,3 @@
 </head>
 
 <body>
-
-  <main>
-    <div class="container">

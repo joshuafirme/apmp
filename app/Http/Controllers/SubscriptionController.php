@@ -8,6 +8,12 @@ use Utils;
 
 class SubscriptionController extends Controller
 {
+    public function index() {
+        $subscribers = Subscription::paginate(10);
+        $page_title = "Users | Pamilya Muna Party List";
+        return view('admin.subscriber.index', compact('page_title', 'subscribers'));
+    }
+
     public function sendMail() {
   
         $email = request()->email;
