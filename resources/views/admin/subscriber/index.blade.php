@@ -94,13 +94,13 @@
 
   </main><!-- End #main -->
 
-  @include('admin.Subscriber.modals')
+  @include('admin.subscriber.modals')
 
   @include('admin.includes._vendor_scripts')
 
   @include('admin.includes._global_scripts')
 
-  @include('admin.Subscriber.script')
+  @include('admin.subscriber.script')
 
   @include('admin.includes.footer')
 
