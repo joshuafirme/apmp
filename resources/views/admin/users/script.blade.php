@@ -81,30 +81,5 @@
 
             $('#change-password').append(change_pass_html);
         });
-
-        
-
-        /*$('#user-form').submit(function(event) {
-                event.preventDefault();
-                $('#btn-submit').html("Please wait...");
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/users/store',
-                    data: $(this).serialize()
-                })
-                .done(function(data){
-                    console.log(data)
-                    $('#btn-submit').html("Save");
-                    setTimeout(() => {
-                        location.reload();
-                    }, 1000);
-                })
-                .fail(function() {
-                    alert( "Posting failed. Please try again." );
-                });
-
-                return false;
-        });*/
     });
 </script>

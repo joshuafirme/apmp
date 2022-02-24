@@ -11,7 +11,7 @@
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item">Admin</li>
-              <li class="breadcrumb-item">Subscriber</li>
+              <li class="breadcrumb-item">Subscribers</li>
             </ol>
           </nav>
         </div><!-- End Page Title -->        
@@ -22,9 +22,13 @@
                       <div class="mt-3 mb-3">
                         
                         @include('includes.alerts')
-
+                        <div>
+                          <button type="button" id="btn-create" class="btn btn-sm btn-primary w-auto open-modal" data-bs-toggle="modal" data-bs-target="#sendMailModal">
+                              Send Email
+                          </button>
+                        </div>
                         <div class="float-end">
-                          <form action="{{route('searchUser')}}" method="get">
+                          <form action="{{route('searchSubscriber')}}" method="get">
                             <div class="input-group mb-3">
                               <input type="text" name="key" class="form-control" placeholder="Search" aria-label="Search" required>
                               <button class="btn btn-outline-secondary" type="submit"><i class="bx bx-search"></i></button>

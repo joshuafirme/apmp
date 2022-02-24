@@ -4,14 +4,45 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Subscription;
+use App\Models\GeneralSetting;
 use Utils;
 
 class SubscriptionController extends Controller
 {
-    public function index() {
+    public function index(GeneralSetting $setting) {
         $subscribers = Subscription::paginate(10);
-        $page_title = "Users | Pamilya Muna Party List";
+        $page_title = "Subscribers | " . $setting::getAppName();
         return view('admin.subscriber.index', compact('page_title', 'subscribers'));
+    }
+
+    public function search(GeneralSetting $setting)
+    {
+        $key = isset(request()->key) ? request()->key : "";
+        $subscribers = Subscription::where('email', 'LIKE', '%' . $key . '%')->paginate(5);
+
+        $page_title = "Subscribers | " . $setting::getAppName();
+        return view('admin.subscriber.index', compact('page_title', 'subscribers'));
+    }
+
+    public function sendBulkMail() {
+  
+        $subscribers = Subscription::select('email', 'status')->where('status', 1)->get();
+        $subject = request()->subject;
+        $message = request()->message;
+        $sent_count = 0;
+        try {
+            if (count($subscribers) && $subject && $message) {
+
+                foreach ($subscribers as $key => $item) {
+                    $res = Utils::sendMail($item->email, $subject, $message);
+                    $sent_count++;
+                }
+                return response()->json(['status' =>  'success', 'sent_count' => $sent_count, 'out_of' => count($subscribers)], 200);
+                    
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['status' =>  'success', 'sent_count' => $sent_count, 'out_of' => count($subscribers)], 200);
+        }
     }
 
     public function sendMail() {
@@ -23,7 +54,8 @@ class SubscriptionController extends Controller
                 return redirect()->back()->with('danger', 'Email is already exists.');
             }
             $mail_type = 'confirm_subscription';
-            Utils::sendMail($email, $mail_type);
+            
+            Utils::sendMail($email, $subject = null, $message = null, $mail_type);
     
             return redirect()->back()->with('success', 'We sent an confimation to your email.');
         }

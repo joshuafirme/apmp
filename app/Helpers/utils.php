@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\Subscription;
 class Utils
 {
-    public static function sendMail($email, $mail_type) {
+    public static function sendMail($email, $subject = "", $message = "", $mail_type = "") {
         
         if ($mail_type == 'confirm_subscription') {
 
@@ -23,9 +23,9 @@ class Utils
             ]);
             
             $subject = "Confirm your subscription for Ang Pamilya Muna - Party List";
-            $html = Utils::confirmSubscriptionTemplate($confirmation_link);
-            Mail::to($email)->send(new Mailer($subject, $html));
+            $message = Utils::confirmSubscriptionTemplate($confirmation_link);
         }
+        Mail::to($email)->send(new Mailer($subject, $message));
     }
 
     public static function confirmSubscriptionTemplate($confirmation_link) {

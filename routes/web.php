@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/general-settings/update-logo', [GeneralSettingsController::class, 'updateLogo']);
 
     Route::get('/subscriber/list', [SubscriptionController::class, 'index']);
+    Route::get('/subscriber/search', [SubscriptionController::class, 'search'])->name('searchSubscriber');
+    Route::post('/subscriber/send-bulk-mail', [SubscriptionController::class, 'sendBulkMail']);
 });
 
 Route::get('/admin/login', [AuthController::class, 'admin_login_view']);

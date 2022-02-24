@@ -40,7 +40,6 @@ class UserController extends Controller
                     ->paginate(5);
         $page_title = "Users | Pamilya Muna Party List";
         return view('admin.users.index', compact('page_title', 'users'));
-    
     }
 
     /**

@@ -35,18 +35,9 @@
         </li>
       </ul>
 
-      <a class="nav-link collapsed" data-bs-target="#subscriber-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-list-check"></i><span>Subscriber</span><i class="bi bi-chevron-down ms-auto"></i>
+      <a class="nav-link {{ \Request::is('subscriber/list') ? '' : "collapsed" }}" href="{{url('/subscriber/list')}}">
+        <i class="bi bi-list-check"></i><span>Subscribers</span>
       </a>
-      <ul id="subscriber-nav" class="nav-content collapse {{ \Request::is('subscriber*') ? 'show' : "" }}" data-bs-parent="#sidebar-nav">
-       
-      <li>
-        <a class="nav-link {{ \Request::is('subscriber/list') ? '' : "collapsed" }}" href="{{url('/subscriber/list')}}">
-          <i class="bi bi-gear"></i>
-          <span>List</span>
-        </a>
-      </li>
-      </ul>
 
     </li><!-- End Components Nav -->
 
