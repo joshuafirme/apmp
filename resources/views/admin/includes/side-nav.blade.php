@@ -18,7 +18,7 @@
       </li>
 
       <a class="nav-link collapsed" data-bs-target="#manage-site-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-card-checklist"></i><span>Manage Site</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-gear"></i><span>Manage Site</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="manage-site-nav" class="nav-content collapse {{ \Request::is('general-settings*') ? 'show' : "" }}" data-bs-parent="#sidebar-nav">
        

@@ -51,9 +51,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request['name'] = $this->getFullname($request);
         $request['password'] = Hash::make($request->password);
-        $request['status'] = 1;
+        //$request['status'] = 1;
         User::create($request->all());
         return redirect()->back()->with('success', 'User was successfully added.');
     }
@@ -89,13 +88,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        $request['name'] = $this->getFullname($request);
-        User::where('id',$id)->update($request->except(['password', '_token', 'firstname', 'lastname', 'middlename']));
-        return redirect()->back()->with('success', 'User was updated successfully.');
-    }
+        $except_values = ['_token', 'firstname', 'lastname', 'middlename'];
 
-    public function getFullname($request) {
-        return $request->firstname .' '. $request->middlename .' '. $request->lastname;
+        if ($request->password && !empty($request->password)) {
+            $request['password'] = Hash::make($request->password);
+        }
+        else {
+            array_push($except_values, 'password');
+        }
+
+        User::where('id',$id)->update($request->except($except_values));
+        return redirect()->back()->with('success', 'User was updated successfully.');
     }
 
     /**

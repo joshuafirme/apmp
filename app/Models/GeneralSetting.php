@@ -38,6 +38,11 @@ class GeneralSetting extends Model
         $cache = self::getCache('contact_and_footer');
         return isset($cache->email) ? $cache->email : "";
     }
+    public static function getCopyright() {
+        $cache = self::getCache('contact_and_footer');
+        return isset($cache->copyright) ? $cache->copyright : "";
+    }
+    
     /*-------------- 
     Others
      ---------------*/

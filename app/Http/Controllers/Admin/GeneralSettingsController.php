@@ -33,6 +33,7 @@ class GeneralSettingsController extends Controller
             "address" => request()->address,
             "phone_number" => request()->phone_number,
             "email" => request()->email,
+            "copyright" => request()->copyright
         );
 
         Cache::put('contact_and_footer_cache', json_encode($data));

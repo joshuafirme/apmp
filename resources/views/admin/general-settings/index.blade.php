@@ -75,6 +75,10 @@
                                       <input type="text" class="form-control" name="email" value="{{ $setting::getEmail() }}" required>
                                     </div>
                                     <div class="col-md-12">
+                                      <label for="validationCustom02" class="form-label">Copy right</label>
+                                      <textarea rows="3" class="form-control" name="copyright" required>{{ $setting::getCopyright() }}</textarea>
+                                    </div>
+                                    <div class="col-md-12">
                                       <button class="btn btn-sm btn-primary" type="submit">Save</button>
                     
                                     </div>

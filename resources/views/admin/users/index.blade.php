@@ -24,7 +24,7 @@
                         @include('includes.alerts')
 
                         <div>
-                          <button type="button" id="btn-create" class="btn btn-sm btn-primary w-auto" data-bs-toggle="modal" data-bs-target="#userModal">
+                          <button type="button" id="btn-create" class="btn btn-sm btn-primary w-auto open-modal" modal-type="create">
                               Create User
                           </button>
                         </div>
@@ -70,12 +70,12 @@
                                     echo '<span class="badge rounded-pill bg-success">Active</span>';
                                 }
                                 else if ( $item->status == 0 ) {
-                                    echo '<span class="badge rounded-pill bg-danger">Blocked</span>';
+                                    echo '<span class="badge rounded-pill bg-danger">Inactive</span>';
                                 }
                             @endphp</td>
                             <td>{{ $item->created_at }}</td>
                             <td>
-                                <a class="btn btn-edit" data-info="{{ json_encode($item)}} "><i class="bx bx-edit"></i></a>
+                                <a class="btn btn-edit open-modal" modal-type="update" data-info="{{ json_encode($item)}} "><i class="bx bx-edit"></i></a>
                                 <a class="btn delete-record" data-id="{{ $item->id }}" object="users" data-bs-toggle="modal" data-bs-target="#delete-record-modal">
                                   <i class="bx bx-trash" style="color: red;"></i>
                                 </a>

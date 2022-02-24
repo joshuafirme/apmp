@@ -1,7 +1,7 @@
 <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      {!!html_entity_decode(App\Models\GeneralSetting::getCopyright())!!}
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
