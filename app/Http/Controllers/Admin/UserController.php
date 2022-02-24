@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\GeneralSetting;
 use Hash;
+use Utils;
 
 class UserController extends Controller
 {
@@ -14,9 +16,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index(GeneralSetting $setting) {
         $users = User::paginate(10);
-        $page_title = "Users | Pamilya Muna Party List";
+        $page_title = "Users | " . $setting::getAppName();
         return view('admin.users.index', compact('page_title', 'users'));
     }
 

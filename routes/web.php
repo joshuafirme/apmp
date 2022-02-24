@@ -29,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/search', [UserController::class, 'search'])->name('searchUser');
 
     Route::get('/general-settings', [GeneralSettingsController::class, 'index']);
+    Route::post('/general-settings/update-basic-info', [GeneralSettingsController::class, 'updateBasicInfo']);
+    Route::post('/general-settings/update-contact-and-footer', [GeneralSettingsController::class, 'updateContactAndFooter']);
+    Route::post('/general-settings/update-logo', [GeneralSettingsController::class, 'updateLogo']);
 
     Route::get('/subscriber/list', [SubscriptionController::class, 'index']);
 });
