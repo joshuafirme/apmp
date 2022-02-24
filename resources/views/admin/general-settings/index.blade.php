@@ -94,7 +94,7 @@
                                       <input class="form-control" type="file" name="image">
                                     </div>
                                     <div class="col-md-6">
-                                      <img src="{{ $setting::getLogo() }}" width="150px" class="img-thumbnail" alt="">
+                                      <img src="{{ asset($setting::getLogo()) }}" width="150px" class="img-thumbnail" alt="">
                                     </div>
                                     <div class="col-md-12">
                                       <button class="btn btn-sm btn-primary" type="submit">Save</button>
