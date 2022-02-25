@@ -26,20 +26,20 @@
                         <div class="d-flex align-items-start">
                           <div class="nav flex-column nav-pills me-3"  style="width: 30%" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             @php
-                                $init_class = strlen(\Cache::get('active_tab')) == 0 ? 'active show' : '';
+                                $init_class = strlen(\Cache::get('get_set_active_tab')) == 0 ? 'active show' : '';
                             @endphp
                             <div class="list-group text-center">
-                              <button type="button" class="list-group-item list-group-item-action {{$init_class}}  {{ \Cache::get('active_tab')=='basic_info' ? 'active' : '' }}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><small>Basic Information</small></button>
-                              <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('active_tab')=='contact' ? 'active' : ''}}" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"><small>Contact Page & Footer</small></button>
-                              <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('active_tab')=='logo' ? 'active' : '' }}" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false"><small>Logo</small></button>
-                              <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('active_tab')=='menu' ? 'active' : '' }}" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><small>Menu</small></button>
+                              <button type="button" class="list-group-item list-group-item-action {{$init_class}}  {{ \Cache::get('get_set_active_tab')=='basic_info' ? 'active' : '' }}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><small>Basic Information</small></button>
+                              <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('get_set_get_set_active_tab')=='contact' ? 'active' : ''}}" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"><small>Contact Page & Footer</small></button>
+                              <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('get_set_active_tab')=='logo' ? 'active' : '' }}" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false"><small>Logo</small></button>
+                              <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('get_set_active_tab')=='menu' ? 'active' : '' }}" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><small>Menu</small></button>
                             </div>
                            
                           </div>
                           <div class="tab-content" style="width: 100%" id="v-pills-tabContent">
-                            <div class="tab-pane fade {{$init_class}} {{ \Cache::get('active_tab') == 'basic_info' ? 'show active' : '' }}" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="tab-pane fade {{$init_class}} {{ \Cache::get('get_set_active_tab') == 'basic_info' ? 'show active' : '' }}" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                               <div class="container">
-                                <form action="/general-settings/update-basic-info" method="post" class="row g-3">
+                                <form action="/manage-site/general-settings/update-basic-info" method="post" class="row g-3">
                                   @csrf
                                     <div class="col-md-12">
                                       <label for="validationCustom01" class="form-label">App name</label>
@@ -58,9 +58,9 @@
                                 </form>
                               </div>
                             </div>
-                            <div class="tab-pane fade {{ \Cache::get('active_tab') == 'contact' ? 'active show' : ''}}" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="tab-pane fade {{ \Cache::get('get_set_active_tab') == 'contact' ? 'active show' : ''}}" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                               <div class="container">
-                                <form action="/general-settings/update-contact-and-footer" method="post" class="row g-3">
+                                <form action="/manage-site/general-settings/update-contact-and-footer" method="post" class="row g-3">
                                   @csrf
                                     <div class="col-md-12">
                                       <label for="validationCustom01" class="form-label">Address</label>
@@ -85,9 +85,9 @@
                                 </form>
                               </div>
                             </div>
-                            <div class="tab-pane fade {{ \Cache::get('active_tab') == 'logo' ? 'active show' : ''}}" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <div class="tab-pane fade {{ \Cache::get('get_set_active_tab') == 'logo' ? 'active show' : ''}}" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                               <div class="container">
-                                <form action="/general-settings/update-logo" method="post" enctype="multipart/form-data" class="row g-3">
+                                <form action="/manage-site/general-settings/update-logo" method="post" enctype="multipart/form-data" class="row g-3">
                                   @csrf
                                     <div class="col-md-12">
                                       <label for="formFile" class="form-label">Website Logo</label>
@@ -114,13 +114,8 @@
 
   </main><!-- End #main -->
 
-  @include('admin.users.modals')
 
   @include('admin.includes._vendor_scripts')
-
-  @include('admin.includes._global_scripts')
-
-  @include('admin.users.script')
 
   @include('admin.includes.footer')
 

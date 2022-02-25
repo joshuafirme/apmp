@@ -6,6 +6,8 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\GeneralSettingsController;
+use App\Http\Controllers\Admin\HomePageSettingsController;
+use App\Http\Controllers\Admin\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,14 +30,21 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/update/{id}', [UserController::class, 'update']);
     Route::get('/user/search', [UserController::class, 'search'])->name('searchUser');
 
-    Route::get('/general-settings', [GeneralSettingsController::class, 'index']);
-    Route::post('/general-settings/update-basic-info', [GeneralSettingsController::class, 'updateBasicInfo']);
-    Route::post('/general-settings/update-contact-and-footer', [GeneralSettingsController::class, 'updateContactAndFooter']);
-    Route::post('/general-settings/update-logo', [GeneralSettingsController::class, 'updateLogo']);
+    Route::resource('/role', RoleController::class);
+    Route::post('/role/update/{id}', [RoleController::class, 'update']);
+
+    Route::get('/manage-site/general-settings', [GeneralSettingsController::class, 'index']);
+    Route::post('/manage-site/general-settings/update-basic-info', [GeneralSettingsController::class, 'updateBasicInfo']);
+    Route::post('/manage-site/general-settings/update-contact-and-footer', [GeneralSettingsController::class, 'updateContactAndFooter']);
+    Route::post('/manage-site/general-settings/update-logo', [GeneralSettingsController::class, 'updateLogo']);
+
+    Route::get('/manage-site/homepage-settings', [HomePageSettingsController::class, 'index']);
+    Route::post('/manage-site/homepage-settings/update-cover', [HomePageSettingsController::class, 'updateCover']);
 
     Route::get('/subscriber/list', [SubscriptionController::class, 'index']);
     Route::get('/subscriber/search', [SubscriptionController::class, 'search'])->name('searchSubscriber');
     Route::post('/subscriber/send-bulk-mail', [SubscriptionController::class, 'sendBulkMail']);
+    Route::resource('/subscriber', SubscriptionController::class);
 });
 
 Route::get('/admin/login', [AuthController::class, 'admin_login_view']);

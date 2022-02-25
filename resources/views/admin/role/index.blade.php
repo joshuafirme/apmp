@@ -7,11 +7,11 @@
   <main id="main" class="main">
 
       <div class="pagetitle">
-          <h1>Users</h1>
+          <h1>Manage Role</h1>
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item">Admin</li>
-              <li class="breadcrumb-item">Users</li>
+              <li class="breadcrumb-item">Manage Role</li>
             </ol>
           </nav>
         </div><!-- End Page Title -->        
@@ -28,50 +28,38 @@
                               Add <i class="bi bi-plus"></i>
                           </button>
                         </div>
-
-                        <div class="float-end">
-                          <form action="{{route('searchUser')}}" method="get">
-                            <div class="input-group mb-3">
-                              <input type="text" name="key" class="form-control" placeholder="Search" aria-label="Search" required>
-                              <button class="btn btn-outline-secondary" type="submit"><i class="bx bx-search"></i></button>
-                            </div>
-                          </form>
-                        </div>
                       </div>
                       
                     <!-- Active Table -->
-                    <table class="table table-borderless table-hover" id="users-table">
+                    <table class="table table-borderless table-hover" id="role-table">
                       <thead>
                         <tr>
                           <th scope="col">Name</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Role</th>
-                          <th scope="col">Status</th>
-                          <th scope="col">Created at</th>
+                          <th scope="col">Permission</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @if (count($users))
-                        @foreach ($users as $item)
+                        @if (count($role))
+                        @foreach ($role as $item)
                           <tr id="record-id-{{$item->id}}">
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->email }}</td>
-                            <td><span class="badge rounded-pill bg-primary">{{ $item->role }}</span></td>
-                            <td>@php
-                                if ( $item->status == 1 ) {
-                                    echo '<span class="badge rounded-pill bg-success">Active</span>';
-                                }
-                                else if ( $item->status == 0 ) {
-                                    echo '<span class="badge rounded-pill bg-danger">Inactive</span>';
-                                }
-                            @endphp</td>
-                            <td>{{ $item->created_at }}</td>
                             <td>
+                              @php
+                                $permissions = explode(', ', $item->permission);
+                                foreach ($permissions as $value) {
+                                  echo '<span class="badge m-1 rounded-pill bg-primary">' . $value . '</span>';
+                                }
+                                  
+                              @endphp
+                            </td>
+                            <td>
+                              @if ($item->name != 'Admin')
                                 <a class="btn btn-edit open-modal" modal-type="update" data-info="{{ json_encode($item)}} "><i class="bx bx-edit"></i></a>
-                                <a class="btn delete-record" data-id="{{ $item->id }}" object="users" data-bs-toggle="modal" data-bs-target="#delete-record-modal">
+                                <a class="btn delete-record" data-id="{{ $item->id }}" object="role" data-bs-toggle="modal" data-bs-target="#delete-record-modal">
                                   <i class="bx bx-trash" style="color: red;"></i>
                                 </a>
+                              @endif
                             </td>
                           </tr> 
                         @endforeach
@@ -91,7 +79,7 @@
                     <!-- End Tables without borders -->
 
                     @php
-                     echo $users->links("pagination::bootstrap-4");
+                     echo $role->links("pagination::bootstrap-4");
                     @endphp
                   </div>
                 </div>
@@ -100,13 +88,13 @@
 
   </main><!-- End #main -->
 
-  @include('admin.users.modals')
+  @include('admin.role.modals')
 
   @include('admin.includes._vendor_scripts')
 
   @include('admin.includes._global_scripts')
 
-  @include('admin.users.script')
+  @include('admin.role.script')
 
   @include('admin.includes.footer')
 

@@ -6,20 +6,35 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\GeneralSetting;
+use App\Models\Role;
 use Hash;
 use Utils;
+use Auth;
 
 class UserController extends Controller
 {
+    private $page = "System Users";
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (User::isPermitted($this->page)) { return $next($request); }
+            return abort(401);
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(GeneralSetting $setting) {
-        $users = User::paginate(10);
+        $users = User::select('users.*', 'user_role.name as role')
+            ->leftJoin('user_role', 'user_role.id', '=', 'users.access_level')->paginate(10);
+
         $page_title = "Users | " . $setting::getAppName();
-        return view('admin.users.index', compact('page_title', 'users'));
+        $roles = Role::all();
+        return view('admin.users.index', compact('page_title', 'users', 'roles'));
     }
 
     /**

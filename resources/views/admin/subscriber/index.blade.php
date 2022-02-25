@@ -63,11 +63,7 @@
                             <td>{{ $item->created_at }}</td>
                              
                             <td>
-                              <div class="form-check form-switch">
-                                <label class="form-check-label" for="flexSwitchCheckChecked"><small>Send Mail</small></label>
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                              </div>
-                              <a class="btn delete-record" data-id="{{ $item->id }}" object="Subscriber" data-bs-toggle="modal" data-bs-target="#delete-record-modal">
+                              <a class="btn delete-record" data-id="{{ $item->id }}" object="subscriber" data-bs-toggle="modal" data-bs-target="#delete-record-modal">
                                 <i class="bx bx-trash" style="color: red;"></i>
                               </a>
                             </td>

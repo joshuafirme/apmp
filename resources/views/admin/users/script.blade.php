@@ -3,9 +3,7 @@
         "use strict";
 
         function clearInputs() {
-            $('[name=firstname]').val('');
-            $('[name=middlename]').val('');
-            $('[name=lastname]').val('');
+            $('[name=name]').val('');
             $('[name=email]').val('');
             $('[name=access_level]').val('');
             $('[name=status]').val('');

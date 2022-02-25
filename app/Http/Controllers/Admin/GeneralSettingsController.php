@@ -22,7 +22,7 @@ class GeneralSettingsController extends Controller
         );
 
         Cache::put('basic_info_cache', json_encode($data));
-        Cache::put('active_tab', 'basic_info');
+        Cache::put('get_set_active_tab', 'basic_info');
 
         return redirect()->back()->with('success', 'Data was saved successfully.');
     }
@@ -37,7 +37,7 @@ class GeneralSettingsController extends Controller
         );
 
         Cache::put('contact_and_footer_cache', json_encode($data));
-        Cache::put('active_tab', 'contact');
+        Cache::put('get_set_active_tab', 'contact');
 
         return redirect()->back()->with('success', 'Data was saved successfully.');
     }
@@ -52,7 +52,7 @@ class GeneralSettingsController extends Controller
             $img_path = $root . $folder_to_save . "/" . $image_name;
             Cache::put('logo_cache', $img_path);
         }
-        Cache::put('active_tab', 'logo');
+        Cache::put('get_set_active_tab', 'logo');
 
         return redirect()->back()->with('success', 'Data was saved successfully.');
     }

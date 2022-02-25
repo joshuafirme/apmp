@@ -57,7 +57,7 @@ class SubscriptionController extends Controller
             
             Utils::sendMail($email, $subject = null, $message = null, $mail_type);
     
-            return redirect()->back()->with('success', 'We sent an confimation to your email.');
+            return redirect()->back()->with('success', 'Thank you, your subscription request was successful! Please check your email inbox to confirm.');
         }
         return redirect()->back()->with('danger', 'Please enter your email.');
     }
@@ -83,6 +83,21 @@ class SubscriptionController extends Controller
         $type = 'text-danger';
         $message = "Subscription key is invalid.";
         return view('subscription-confirm', compact('message', 'type'));
+    }
+
+    public function destroy(Subscription $subscriber)
+    {
+        if ($subscriber->delete()) {
+            return response()->json([
+                'status' =>  'success',
+                'message' => 'Data was deleted.'
+            ], 200);
+        }
+
+        return response()->json([
+            'status' =>  'error',
+            'message' => 'Deleting data failed.'
+        ], 200);
     }
 
 }

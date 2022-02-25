@@ -21,5 +21,8 @@
           </section>
 
 </main><!-- End #main -->
+@include('admin.includes._vendor_scripts')
+
+@include('admin.includes._global_scripts')
 
 @include('admin.includes.footer')

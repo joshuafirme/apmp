@@ -15,8 +15,9 @@
                   <label for="validationCustom04" class="form-label">Access Level</label>
                   <select class="form-select" name="access_level" id="validationCustom04" required>
                     <option selected disabled value="">Choose...</option>
-                    <option value="2">Support</option>
-                    <option value="1">Admin</option>
+                    @foreach ($roles as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
                   </select>
                   <div class="invalid-feedback">
                     Please select a valid state.
