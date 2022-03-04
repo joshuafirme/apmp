@@ -50,6 +50,30 @@
           <i class="bi bi-circle"></i><span>Home Page</span>
         </a>
       </li>
+      <li>
+        <a class="nav-link {{ \Request::is('manage-site/gallery') ? '' : "collapsed" }}" href="{{url('/manage-site/gallery')}}">
+          <i class="bi bi-circle"></i><span>Gallery</span>
+        </a>
+      </li>
+
+      </ul>
+
+      <a class="nav-link collapsed" data-bs-target="#manage-pages-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-gear"></i><span>Manage Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="manage-pages-nav" class="nav-content collapse {{ \Request::is('manage-pages/*') ? 'show' : "" }}" data-bs-parent="#sidebar-nav">
+       
+      <li>
+        <a class="nav-link {{ \Request::is('manage-pages/general-settings') ? '' : "collapsed" }}" href="{{url('/manage-pages/general-settings')}}">
+          <i class="bi bi-gear"></i>
+          <span>Privacy Policy</span>
+        </a>
+      </li>
+      <li>
+        <a class="nav-link {{ \Request::is('manage-pages/homepage-settings') ? '' : "collapsed" }}" href="{{url('/manage-pages/homepage-settings')}}">
+          <i class="bi bi-circle"></i><span>About Us</span>
+        </a>
+      </li>
 
       </ul>
 

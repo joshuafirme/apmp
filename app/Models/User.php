@@ -30,16 +30,11 @@ class User extends Authenticatable
     public static function isPermitted($page) {
         $is_permitted = false;
         if (Auth::check()) {
-            $permissions = self::permissions();
+            $permissions = Role::permissions();
             if (in_array($page, $permissions)) {
                 return true;
             }
         }
-    }
-    
-    public static function permissions() {
-        $permissions = Role::where('id', Auth::user()->access_level)->value('permission');
-        return $permissions ? explode(', ', $permissions) : [];
     }
 
     /**

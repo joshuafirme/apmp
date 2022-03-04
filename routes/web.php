@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\GeneralSettingsController;
 use App\Http\Controllers\Admin\HomePageSettingsController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/manage-site/homepage-settings', [HomePageSettingsController::class, 'index']);
     Route::post('/manage-site/homepage-settings/update-cover', [HomePageSettingsController::class, 'updateCover']);
+
+    Route::resource('/manage-site/gallery', GalleryController::class);
+    Route::post('/manage-site/gallery/update/{id}', [GalleryController::class, 'update']);
+    Route::post('/manage-site/gallery/fb-photos-sync', [GalleryController::class, 'getFreshFbPhotos']);
+    Route::post('/update-gallery-settings', [GalleryController::class, 'updateGallerySettings']);
 
     Route::get('/subscriber/list', [SubscriptionController::class, 'index']);
     Route::get('/subscriber/search', [SubscriptionController::class, 'search'])->name('searchSubscriber');

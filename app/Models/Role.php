@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Role extends Model
 {
@@ -15,4 +16,11 @@ class Role extends Model
         'name',
         'permission',
     ];
+
+    
+    
+    public static function permissions() {
+        $permissions = self::where('id', Auth::user()->access_level)->value('permission');
+        return $permissions ? explode(', ', $permissions) : [];
+    }
 }

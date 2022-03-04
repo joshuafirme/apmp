@@ -9,6 +9,17 @@ use App\Models\User;
 use App\Models\Subscription;
 class Utils
 {
+    public function imageUpdoad($request, $folder_to_save = "img", $root = "assets/") {
+        $img_path = "";
+        if($request->hasFile('image')){
+            $root = 'assets/';       
+            $image_name = uniqid() . "." . $request->image->extension();
+            $request->image->move(public_path($root . $folder_to_save), $image_name);
+            $img_path = $root . $folder_to_save . "/" . $image_name;
+        }
+
+        return $img_path;
+    }
     public static function sendMail($email, $subject = "", $message = "", $mail_type = "") {
         
         if ($mail_type == 'confirm_subscription') {
