@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/subscriber/list', [SubscriptionController::class, 'index']);
     Route::get('/subscriber/search', [SubscriptionController::class, 'search'])->name('searchSubscriber');
     Route::post('/subscriber/send-bulk-mail', [SubscriptionController::class, 'sendBulkMail']);
+    Route::get('/subscriber/export-csv', [SubscriptionController::class, 'exportCSV']);
     Route::resource('/subscriber', SubscriptionController::class);
 });
 

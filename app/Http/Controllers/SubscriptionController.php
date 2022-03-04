@@ -100,4 +100,9 @@ class SubscriptionController extends Controller
         ], 200);
     }
 
+    function exportCSV() {
+        $data = Subscription::select('email', 'status', 'created_at')->get();
+        return Utils::CSVExporter($data, 'subscribers');  
+    }
+
 }

@@ -12,7 +12,7 @@
                   <input type="text" class="form-control" name="name"  required>
                 </div>
                 <div class="col-md-12">
-                  <label for="validationCustom04" class="form-label">Access Level</label>
+                  <label for="validationCustom04" class="form-label">Role</label>
                   <select class="form-select" name="access_level" id="validationCustom04" required>
                     <option selected disabled value="">Choose...</option>
                     @foreach ($roles as $item)

@@ -23,9 +23,13 @@
                         
                         @include('includes.alerts')
                         <div>
-                          <button type="button" id="btn-create" class="btn btn-sm btn-primary w-auto open-modal" data-bs-toggle="modal" data-bs-target="#sendMailModal">
-                              Send Email
-                          </button>
+                          <button type="button" class="btn btn-sm btn-primary w-auto open-modal" data-bs-toggle="modal" data-bs-target="#sendMailModal">
+                            Send Email <i class="ri-mail-send-line"></i>
+                        </button>
+
+                        <a class="btn btn-sm btn-success w-auto" href="{{ url('/subscriber/export-csv') }}" target="_blank">
+                          Export CSV <i class="ri-file-excel-2-line" id="btn-export-csv"></i>
+                        </a>
                         </div>
                         <div class="float-end">
                           <form action="{{route('searchSubscriber')}}" method="get">
@@ -43,7 +47,7 @@
                         <tr>
                           <th scope="col">Email</th>
                           <th scope="col">Status</th>
-                          <th scope="col">Created at</th>
+                          <th scope="col">Subscription Date</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>

@@ -20,6 +20,49 @@ class Utils
 
         return $img_path;
     }
+
+    public static function CSVExporter($data, $type)
+    {  
+        $fileName = $type . '-' . date('Y-m-d h:m:s') . '.csv';
+     
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $callback = ""; 
+
+        if ($type == 'subscribers') {
+            $columns = array('Email', 'Status', 'Subscription Date');
+
+            $callback = function() use($data, $columns) {
+                $file = fopen('php://output', 'w');
+                fputcsv($file, $columns);
+
+                foreach ($data as $item) {
+                    if ( $item->status == 1 ) {
+                        $status = 'Verified';
+                    }
+                    else if ( $item->status == 0 ) {
+                        $status = 'Unverified';
+                    }
+                    $row['Email']              = $item->email;
+                    $row['Status']             = $item->status;
+                    $row['Subscription Date']  = $item->created_at;
+
+                    fputcsv($file, array($row['Email'], $row['Status'], $row['Subscription Date']));
+                }
+
+                fclose($file);
+            };
+        }
+
+        return response()->stream($callback, 200, $headers);
+    }
+
     public static function sendMail($email, $subject = "", $message = "", $mail_type = "") {
         
         if ($mail_type == 'confirm_subscription') {
