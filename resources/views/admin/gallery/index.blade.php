@@ -3,15 +3,7 @@
   @include('admin.includes.top-nav')
 
   @include('admin.includes.side-nav')
-<style>
-  	.photo-thumb{
-		width:263px;
-		height:263px;
-		float:left;
-		border: thin solid #d1d1d1;
-		margin:0 1em 1em 0;
-	}
-</style>
+  
   <main id="main" class="main">
 
       <div class="pagetitle">

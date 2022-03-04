@@ -5,13 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
+use App\Models\SliderBanner;
+use App\Models\Slider;
 use Cache;
 
 class HomePageSettingsController extends Controller
 {
     public function index(GeneralSetting $setting) { 
         $page_title = "Home Page Settings | " . $setting::getAppName();
-        return view('admin.homepage-settings.index', compact('page_title', 'setting'));
+
+        $slider_banner = SliderBanner::paginate(5);
+        $slider = Slider::paginate(5);
+
+        return view('admin.homepage-settings.index', compact('page_title', 'setting', 'slider_banner', 'slider'));
     }
 
     public function updateCover() { 

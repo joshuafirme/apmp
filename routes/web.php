@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\GeneralSettingsController;
 use App\Http\Controllers\Admin\HomePageSettingsController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\SliderBannerController;
+use App\Http\Controllers\Admin\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/subscriber/send-bulk-mail', [SubscriptionController::class, 'sendBulkMail']);
     Route::get('/subscriber/export-csv', [SubscriptionController::class, 'exportCSV']);
     Route::resource('/subscriber', SubscriptionController::class);
+
+    Route::resource('/slider-banner', SliderBannerController::class);
+    Route::post('/slider-banner/update/{id}', [SliderBannerController::class, 'update']);
+
+    Route::resource('/slider', SliderController::class);
 });
 
 Route::get('/admin/login', [AuthController::class, 'admin_login_view']);
