@@ -59,20 +59,31 @@
       </ul>
 
       <a class="nav-link collapsed" data-bs-target="#manage-pages-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-gear"></i><span>Manage Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-card-text"></i><span>Manage Pages</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <ul id="manage-pages-nav" class="nav-content collapse {{ \Request::is('manage-pages/*') ? 'show' : "" }}" data-bs-parent="#sidebar-nav">
+      <ul id="manage-pages-nav" class="nav-content collapse {{ \Request::is('manage-page/*') || \Request::is('post/*') ? 'show' : "" }}" data-bs-parent="#sidebar-nav">
        
       <li>
-        <a class="nav-link {{ \Request::is('manage-pages/general-settings') ? '' : "collapsed" }}" href="{{url('/manage-pages/general-settings')}}">
-          <i class="bi bi-gear"></i>
-          <span>Privacy Policy</span>
-        </a>
-      </li>
-      <li>
-        <a class="nav-link {{ \Request::is('manage-pages/homepage-settings') ? '' : "collapsed" }}" href="{{url('/manage-pages/homepage-settings')}}">
-          <i class="bi bi-circle"></i><span>About Us</span>
-        </a>
+        <li>
+          <a class="nav-link {{ \Request::is('manage-page/about') ? '' : "collapsed" }}" href="{{url('/manage-page/about')}}">
+            <i class="bi bi-circle"></i><span>About</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link {{ \Request::is('post/events') ? '' : "collapsed" }}" href="{{url('/post/events')}}">
+            <i class="bi bi-circle"></i><span>Events</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link {{ \Request::is('post/projects') ? '' : "collapsed" }}" href="{{url('/post/projects')}}">
+            <i class="bi bi-circle"></i><span>Projects</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link {{ \Request::is('post/news') ? '' : "collapsed" }}" href="{{url('/post/news')}}">
+            <i class="bi bi-circle"></i><span>News</span>
+          </a>
+        </li>
       </li>
 
       </ul>

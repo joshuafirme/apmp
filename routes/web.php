@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\SliderBannerController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ManagePageController;
+use App\Http\Controllers\Admin\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +46,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/manage-site/homepage-settings', [HomePageSettingsController::class, 'index']);
     Route::post('/manage-site/homepage-settings/update-cover', [HomePageSettingsController::class, 'updateCover']);
 
+    Route::get('/manage-page/about', [ManagePageController::class, 'about_view']);
+    Route::post('/manage-page/update-about', [ManagePageController::class, 'updateAboutContent']);
+
     Route::resource('/manage-site/gallery', GalleryController::class);
     Route::post('/manage-site/gallery/update/{id}', [GalleryController::class, 'update']);
     Route::post('/manage-site/gallery/fb-photos-sync', [GalleryController::class, 'getFreshFbPhotos']);
@@ -59,6 +64,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/slider-banner/update/{id}', [SliderBannerController::class, 'update']);
 
     Route::resource('/slider', SliderController::class);
+
+    Route::post('/post/update/{id}', [PostController::class, 'update']);
+    Route::get('/post/events', [PostController::class, 'events_view']);
+    Route::get('/post/projects', [PostController::class, 'projects_view']);
+    Route::get('/post/news', [PostController::class, 'news_view']);
+    Route::resource('/post', PostController::class);
 });
 
 Route::get('/admin/login', [AuthController::class, 'admin_login_view']);

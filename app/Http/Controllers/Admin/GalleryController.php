@@ -53,7 +53,7 @@ class GalleryController extends Controller
         $album_id = request()->album_id;
         $gllr_settings = json_decode(Cache::get('gallery_settings_cache'));
         $limit = isset($gllr_settings->posts_limit) ? $gllr_settings->posts_limit : 10;
-        $access_token = "EAANWvKagZBAMBAGzHvooa1rBlU94LQZBNdyeHBavK7YZApE7WqQ0Kq9OFVW1JZB1ZCd7A0yTFn38wQY2ZAoxNiIkAxzenFSVw5iyHS0eRHuHHZBedJjYj5QvwxR6yWZAVPYqaDe0ZA7R3KeWWDNlZBoT8UHeohxZBDZBa6ZARbKLGmhp6fbZB6Ti0hvmWo";
+        $access_token = "EAAJhpWtJQJsBADNAyZCDZAZAlZCZBDFOSv6ZCPAsPy74S4QJM7lWQbs5gh8xkmn4IcPXipT7ZCfqTo3my9qtMNIupDjARnPqYuZCbptjEPTMmOLZAJCGivJboga1XGB6JFfyaj0IePQGZBVI06fQS74lbTFwpqZBtyAvJj3pYFwfDvJ0ZCYIeQz5hpZCdmZCdvcW9pcjvpVCbYpMPrugZDZD";
         $json_link = "https://graph.facebook.com/v2.3/{$album_id}/photos?limit={$limit}&fields=link,descriptio,source,images,name&access_token={$access_token}";
         $json = file_get_contents($json_link);
         

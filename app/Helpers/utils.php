@@ -21,6 +21,10 @@ class Utils
         return $img_path;
     }
 
+    public function formatDate($created_at) {
+        return date('M d, Y h:i a', strtotime($created_at));
+    }
+
     public static function CSVExporter($data, $type)
     {  
         $fileName = $type . '-' . date('Y-m-d h:m:s') . '.csv';

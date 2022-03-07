@@ -66,7 +66,7 @@
                                     echo '<span class="badge rounded-pill bg-danger">Inactive</span>';
                                 }
                             @endphp</td>
-                            <td>{{ $item->created_at }}</td>
+                            <td>{{ Utils::formatDate($item->created_at) }}</td>
                             <td>
                                 <a class="btn btn-edit open-modal" modal-type="update" data-info="{{ json_encode($item)}} "><i class="bx bx-edit"></i></a>
                                 <a class="btn delete-record" data-id="{{ $item->id }}" object="users" data-bs-toggle="modal" data-bs-target="#delete-record-modal">
