@@ -23,13 +23,41 @@
                       
                       @include('includes.alerts')
 
+                      @php
+                          $about_cache = json_decode(Cache::get('about_cache'));
+                          $is_image_exists = isset($about_cache->image) && strlen($about_cache->image) > 0 ? 1 : 0
+                      @endphp
+
                     </div>
             
-                    <form action="/manage-page/update-about" method="post">
+                    <form action="/manage-page/update-about" method="post" enctype="multipart/form-data">
                         @csrf
-                        <textarea class="tinymce-editor" name="about_content">
-                          {{ Cache::get('about_cache') }}
-                        </textarea>
+                        <div class="row">
+                          <div class="col-12">
+                            <textarea class="tinymce-editor" name="about_content">
+                              {{ isset($about_cache->about_content) ? $about_cache->about_content : "" }}
+                            </textarea>
+                          </div>
+                          <div class="col-12 mt-3">
+                            <label>{{ $is_image_exists == 1 ? "Update " : "" }}Cover Image</label>
+                            <input class="form-control" type="file" name="image">
+                          </div>
+                          @if ($is_image_exists == 1)
+                          <div class="col-12 mt-3">
+                            <div class="mb-1">Image Preview</div>
+                            <img width="300" src="{{ asset($about_cache->image) }}" alt="">
+                          </div>
+                          @endif
+                          <div class="col-12 mt-3">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="show_image" 
+                              {{ isset($about_cache->show_image) && $about_cache->show_image == 1 ? 'checked' : '' }}>
+                              <label class="form-check-label">
+                                Show Image
+                              </label>
+                            </div>
+                          </div>
+                        </div>
                         <button class="btn btn-sm btn-primary mt-3" type="submit">Save</button>
                     </form>
 

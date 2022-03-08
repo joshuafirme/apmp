@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\User;
 use Cache;
+use Utils;
 
 class ManagePageController extends Controller
 {
@@ -26,7 +27,16 @@ class ManagePageController extends Controller
     }
 
     public function updateAboutContent() { 
-        Cache::put('about_cache', request()->about_content);
+
+        $img_path = Utils::imageUpdoad(request());
+        $show_image = request()->show_image == 'on' ? 1 : 0;
+        
+        $data = array(
+            "about_content" => request()->about_content,
+            "image" => $img_path,
+            "show_image" => $show_image
+        );
+        Cache::put('about_cache', json_encode($data));
         return redirect()->back()->with('success', 'Data was saved successfully.'); 
     }
 }
