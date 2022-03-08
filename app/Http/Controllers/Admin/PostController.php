@@ -128,8 +128,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        if ($post->delete()) {
+            return response()->json([
+                'status' =>  'success',
+                'message' => 'Data was deleted.'
+            ], 200);
+        }
+
+        return response()->json([
+            'status' =>  'error',
+            'message' => 'Deleting data failed.'
+        ], 200);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -28,6 +29,8 @@ use App\Http\Controllers\Admin\PostController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [LandingPageController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
