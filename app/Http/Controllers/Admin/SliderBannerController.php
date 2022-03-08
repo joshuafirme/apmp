@@ -5,11 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SliderBanner;
+use App\Models\User;
 use Cache;
 use Utils;
 
 class SliderBannerController extends Controller
 {
+    private $page = "Manage Site";
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (User::isPermitted($this->page)) { return $next($request); }
+            return abort(401);
+        });
+    }
     /**
      * Display a listing of the resource.
      *

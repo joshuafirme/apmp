@@ -6,11 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\Gallery;
+use App\Models\User;
 use Cache;
 use Utils;
 
 class GalleryController extends Controller
 {
+    private $page = "Manage Site";
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (User::isPermitted($this->page)) { return $next($request); }
+            return abort(401);
+        });
+    }
+    
     /**
      * Display a listing of the resource.
      *

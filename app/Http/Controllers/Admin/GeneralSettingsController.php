@@ -5,10 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
+use App\Models\User;
 use Cache;
 
 class GeneralSettingsController extends Controller
 {
+    private $page = "Manage Site";
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (User::isPermitted($this->page)) { return $next($request); }
+            return abort(401);
+        });
+    }
+
     public function index(GeneralSetting $setting) { 
         $page_title = "General Settings | " . $setting::getAppName();
         return view('admin.general-settings.index', compact('page_title', 'setting'));

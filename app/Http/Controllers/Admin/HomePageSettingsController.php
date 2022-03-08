@@ -7,10 +7,21 @@ use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\SliderBanner;
 use App\Models\Slider;
+use App\Models\User;
 use Cache;
 
 class HomePageSettingsController extends Controller
 {
+    private $page = "Manage Site";
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (User::isPermitted($this->page)) { return $next($request); }
+            return abort(401);
+        });
+    }
+
     public function index(GeneralSetting $setting) { 
         $page_title = "Home Page Settings | " . $setting::getAppName();
 

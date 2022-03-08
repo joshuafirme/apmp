@@ -19,7 +19,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password])) 
         {
             if (Auth::user()->status == 1) {
-                return redirect()->intended('/dashboard');  
+                return redirect()->intended('/subscriber');  
             }
             return redirect()->back()->with('danger', 'Your account is blocked.');  
         }

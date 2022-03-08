@@ -6,10 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\Role;
+use App\Models\User;
 use Cache;
 
 class RoleController extends Controller
 {
+    private $page = "System Users";
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (User::isPermitted($this->page)) { return $next($request); }
+            return abort(401);
+        });
+    }
     /**
      * Display a listing of the resource.
      *

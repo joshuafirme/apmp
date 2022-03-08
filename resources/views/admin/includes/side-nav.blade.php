@@ -10,7 +10,7 @@
         </a>
       </li> End Dashboard Nav -->
 
-      <a class="nav-link {{ \Request::is('subscriber/list') ? '' : "collapsed" }}" href="{{url('/subscriber/list')}}">
+      <a class="nav-link {{ \Request::is('subscriber') ? '' : "collapsed" }}" href="{{url('/subscriber')}}">
         <i class="bi bi-list-check"></i><span>Subscribers</span>
       </a>
       <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">

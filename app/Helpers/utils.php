@@ -54,7 +54,7 @@ class Utils
                         $status = 'Unverified';
                     }
                     $row['Email']              = $item->email;
-                    $row['Status']             = $item->status;
+                    $row['Status']             = $item->status == 1 ? 'Verified' : 'Unverified';
                     $row['Subscription Date']  = $item->created_at;
 
                     fputcsv($file, array($row['Email'], $row['Status'], $row['Subscription Date']));
