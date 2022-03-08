@@ -14,10 +14,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         \App\Models\User::create([
-            'name' => "Joshua Firme",
-            'email' => "joshuafirme1@gmail.com",
+            'name' => "Admin",
+            'email' => "admin@admin.com",
             'password' => \Hash::make("12345"),
-            'status' => 1
+            'status' => 1,
+            'access_level' => 1
         ]);
     }
 }
