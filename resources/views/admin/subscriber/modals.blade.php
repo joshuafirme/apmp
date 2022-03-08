@@ -13,7 +13,7 @@
               </div>
               <div class="col-md-12">
                 <label for="validationCustom02" class="form-label">Message</label>
-                <textarea rows="4" type="text" class="form-control" name="message" required></textarea>
+                <textarea rows="6" class="tinymce-editor" name="message"></textarea>
               </div>
               <div class="col-md-12" id="result-message">
               </div>

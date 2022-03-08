@@ -11,7 +11,7 @@
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item">Admin</li>
-              <li class="breadcrumb-item">Users</li>
+              <li class="breadcrumb-item">Users <span class="badge rounded-pill bg-primary">{{ count($users) }}</span></li>
             </ol>
           </nav>
         </div><!-- End Page Title -->        

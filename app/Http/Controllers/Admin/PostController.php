@@ -29,6 +29,22 @@ class PostController extends Controller
         return view('admin.manage-pages.post.index', compact('page_title', 'posts', 'category', 'post_text'));
     }
 
+     public function projects_view(GeneralSetting $setting) { 
+        $page_title = "Projects | " . $setting::getAppName();
+        $posts = Post::where('category', 'project')->paginate(10);
+        $category = 'project';
+        $post_text = "Project";
+        return view('admin.manage-pages.post.index', compact('page_title', 'posts', 'category', 'post_text'));
+    }
+
+    public function news_view(GeneralSetting $setting) { 
+        $page_title = "News | " . $setting::getAppName();
+        $posts = Post::where('category', 'news')->paginate(10);
+        $category = 'news';
+        $post_text = "News";
+        return view('admin.manage-pages.post.index', compact('page_title', 'posts', 'category', 'post_text'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

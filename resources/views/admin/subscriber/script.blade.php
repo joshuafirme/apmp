@@ -1,3 +1,5 @@
+@include('admin.includes.scripts.tinymce')
+
 <script>
     $(function(){
         "use strict";

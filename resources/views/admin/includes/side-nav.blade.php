@@ -3,12 +3,12 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
+    <!--  <li class="nav-item">
         <a class="nav-link {{ \Request::is('dashboard') ? 'active' : "collapsed" }}" href="{{url('/dashboard')}}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li> End Dashboard Nav -->
 
       <a class="nav-link {{ \Request::is('subscriber/list') ? '' : "collapsed" }}" href="{{url('/subscriber/list')}}">
         <i class="bi bi-list-check"></i><span>Subscribers</span>
