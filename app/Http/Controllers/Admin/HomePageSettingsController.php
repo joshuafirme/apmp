@@ -45,4 +45,21 @@ class HomePageSettingsController extends Controller
 
         return redirect()->back()->with('success', 'Data was saved successfully.');
     }
+
+    public function updateHeader() {
+        $data = array(
+            "title" => request()->title,
+            "projects" => request()->projects,
+            "events" => request()->events,
+            "news" => request()->news,
+            "about" => request()->about,
+            "advocacies" => request()->advocacies,
+            "contact" => request()->contact,
+        );
+
+        Cache::put('header_cache', json_encode($data));
+        Cache::put('hp_active_tab', 'header');
+
+        return redirect()->back()->with('success', 'Data was saved successfully.');
+    }
 }

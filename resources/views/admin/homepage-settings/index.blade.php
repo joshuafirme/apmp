@@ -29,14 +29,20 @@
                                 $init_class = strlen(\Cache::get('hp_active_tab')) == 0 ? 'active show' : '';
                             @endphp
                             <div class="list-group text-center">
-                              <button type="button" class="list-group-item list-group-item-action {{$init_class}}  {{ \Cache::get('hp_active_tab') == 'slider_banner' ? 'active' : '' }}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><small>Slider Banner</small></button>
+                              <button type="button" class="list-group-item list-group-item-action {{$init_class}}  {{ \Cache::get('hp_active_tab') == 'header' ? 'active' : '' }}" id="v-pills-menu-tab" data-bs-toggle="pill" data-bs-target="#v-pills-menu" type="button" role="tab" aria-controls="v-pills-menu" aria-selected="true"><small>Header</small></button>
+                              <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('hp_active_tab') == 'slider_banner' ? 'active' : '' }}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><small>Slider Banner</small></button>
                               <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('hp_active_tab')=='slider' ? 'active' : ''}}" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"><small>Slider</small></button>
                               <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('hp_active_tab')=='visibility' ? 'active' : '' }}" id="v-pills-visibility-tab" data-bs-toggle="pill" data-bs-target="#v-pills-visibility" type="button" role="tab" aria-controls="v-pills-visibility" aria-selected="false"><small>Visibility</small></button>
                             </div>
                            
                           </div>
                           <div class="tab-content" style="width: 100%" id="v-pills-tabContent">
-                            <div class="tab-pane fade {{$init_class}} {{ \Cache::get('hp_active_tab') == 'slider_banner' ? 'show active' : '' }}" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="tab-pane fade {{$init_class}} {{ \Cache::get('hp_active_tab') == 'header' ? 'show active' : '' }}" id="v-pills-menu" role="tabpanel" aria-labelledby="v-pills-menu-tab">
+                              <div class="container">
+                                @include('admin.includes.tables.header')
+                              </div>
+                            </div>
+                            <div class="tab-pane fade {{ \Cache::get('hp_active_tab') == 'slider_banner' ? 'show active' : '' }}" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                               <div class="container">
                                 <button type="button" class="btn btn-sm btn-primary w-auto float-end" id="btn-add-slider-banner" modal-type="create" data-bs-toggle="modal" data-bs-target="#sliderBannerModal">
                                   Add <i class="bi bi-plus"></i>

@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/manage-site/homepage-settings', [HomePageSettingsController::class, 'index']);
     Route::post('/manage-site/homepage-settings/update-cover', [HomePageSettingsController::class, 'updateCover']);
+    Route::post('/manage-site/homepage-settings/update-header', [HomePageSettingsController::class, 'updateHeader']);
 
     Route::get('/manage-page/about', [ManagePageController::class, 'about_view']);
     Route::post('/manage-page/update-about', [ManagePageController::class, 'updateAboutContent']);
