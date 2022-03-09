@@ -58,7 +58,7 @@
 
             <h2>About Us</h2>
 
-            {!! $about->about_content !!}
+            {!! isset($about->about_content) ? $about->about_content : "" !!}
 
           </div>
         </div>
