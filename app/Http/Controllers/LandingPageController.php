@@ -23,15 +23,28 @@ class LandingPageController extends Controller
 
         $contact = json_decode(Cache::get('contact_and_footer_cache'));
 
-        $projects = Post::where('category', 'project')->get();
+        $projects = $this->getPostCache('project');
 
-        $events = Post::where('category', 'event')->get();
+        $events = $this->getPostCache('event');
 
-        $news = Post::where('category', 'news')->get();
+        $news = $this->getPostCache('news');
+
+        $advocacies = $this->getPostCache('advocacy');
 
         $page_title = $setting::getHomePageTitle();
 
-        return view('index', compact('page_title', 'slider_banner', 'slider', 'about', 'contact', 'projects', 'events', 'news'));
+        return view('index', compact('page_title', 'slider_banner', 'slider', 'about', 'contact', 'projects', 'events', 'news', 'advocacies'));
+    }
+
+    public function getPostCache($category) {
+        
+        $post_cache = Cache::get('posts_cache');
+        if ($post_cache) {
+            return $post_cache;
+        }
+        $fresh_data = Post::where('category', $category)->get();
+        Cache::get($category . '_cache', $fresh_data);
+        return $fresh_data;
     }
 
 }

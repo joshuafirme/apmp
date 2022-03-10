@@ -48,7 +48,7 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $img_path = Utils::imageUpdoad($request);
+        $img_path = Utils::fileUpdoad($request);
         $inputs = $request->all();
         if ($img_path) {
             $inputs['image'] = $img_path;

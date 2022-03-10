@@ -10,7 +10,7 @@
         <input type="text" class="form-control" name="title" value="{{ isset($header->title) ? $header->title : "" }}" required>
       </div>
       <div class="col-md-12 mt-4">
-        <label>Menus</label>
+        <label>Visibility</label>
         <div class="form-check form-switch mt-2">
           <input class="form-check-input" type="checkbox" name="projects" 
           {{ isset($header->projects) && $header->projects == 'on' ? 'checked' : "" }}>

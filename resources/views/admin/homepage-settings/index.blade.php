@@ -32,7 +32,6 @@
                               <button type="button" class="list-group-item list-group-item-action {{$init_class}}  {{ \Cache::get('hp_active_tab') == 'header' ? 'active' : '' }}" id="v-pills-menu-tab" data-bs-toggle="pill" data-bs-target="#v-pills-menu" type="button" role="tab" aria-controls="v-pills-menu" aria-selected="true"><small>Header</small></button>
                               <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('hp_active_tab') == 'slider_banner' ? 'active' : '' }}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><small>Slider Banner</small></button>
                               <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('hp_active_tab')=='slider' ? 'active' : ''}}" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"><small>Slider</small></button>
-                              <button type="button" class="list-group-item list-group-item-action {{ \Cache::get('hp_active_tab')=='visibility' ? 'active' : '' }}" id="v-pills-visibility-tab" data-bs-toggle="pill" data-bs-target="#v-pills-visibility" type="button" role="tab" aria-controls="v-pills-visibility" aria-selected="false"><small>Visibility</small></button>
                             </div>
                            
                           </div>
@@ -58,11 +57,6 @@
                                 </button>
                                 <!-- Table -->
                                 @include('admin.includes.tables.slider')
-                              </div>
-                            </div>
-                            <div class="tab-pane fade {{ \Cache::get('hp_active_tab') == 'visibility' ? 'active show' : ''}}" id="v-pills-visibility" role="tabpanel" aria-labelledby="v-pills-visibility-tab">
-                              <div class="container">
-                                ...
                               </div>
                             </div>
                           </div>

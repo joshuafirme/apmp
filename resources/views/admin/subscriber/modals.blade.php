@@ -1,5 +1,5 @@
 <div class="modal fade" id="sendMailModal" tabindex="-1">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xl">
     <form action="#" method="post" class="modal-content" id="send-mail-form">
       @csrf
       <div class="modal-header">
@@ -13,7 +13,7 @@
               </div>
               <div class="col-md-12">
                 <label for="validationCustom02" class="form-label">Message</label>
-                <textarea rows="6" class="tinymce-editor" name="message"></textarea>
+                <textarea rows="6" class="tinymce-editor" name="message" id="rich_text_editor"></textarea>
               </div>
               <div class="col-md-12" id="result-message">
               </div>

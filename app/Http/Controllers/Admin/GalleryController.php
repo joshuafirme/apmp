@@ -92,7 +92,7 @@ class GalleryController extends Controller
      */
     public function store(Request $request, Gallery $gallery)
     {
-        $img_path = Utils::imageUpdoad($request);
+        $img_path = Utils::fileUpdoad($request);
         $inputs = $request->all();
         if ($img_path) {
             $inputs['image'] = $img_path;
@@ -132,7 +132,7 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $img_path = Utils::imageUpdoad($request);
+        $img_path = Utils::fileUpdoad($request);
         $inputs = $request->except('_token');
         if ($img_path) {
             $inputs['image'] = $img_path;

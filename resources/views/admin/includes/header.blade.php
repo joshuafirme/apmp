@@ -26,6 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('assets/css/admin.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('assets/vendor/richtexteditor/rte_theme_default.css')}}" />  
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.2.2

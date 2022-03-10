@@ -25,7 +25,7 @@
 
                       @php
                           $about_cache = json_decode(Cache::get('about_cache'));
-                          $is_image_exists = isset($about_cache->image) && strlen($about_cache->image) > 0 ? 1 : 0
+                          $is_media_exists = isset($about_cache->media) && strlen($about_cache->media) > 0 ? 1 : 0
                       @endphp
 
                     </div>
@@ -34,26 +34,33 @@
                         @csrf
                         <div class="row">
                           <div class="col-12">
-                            <textarea class="tinymce-editor" name="about_content">
+                            <textarea id="rich_text_editor" name="about_content">
                               {{ isset($about_cache->about_content) ? $about_cache->about_content : "" }}
                             </textarea>
                           </div>
                           <div class="col-12 mt-3">
-                            <label>{{ $is_image_exists == 1 ? "Update " : "" }}Cover Image</label>
+                            <label>{{ $is_media_exists == 1 ? "Update " : "" }} Media</label>
                             <input class="form-control" type="file" name="image">
                           </div>
-                          @if ($is_image_exists == 1)
-                          <div class="col-12 mt-3">
-                            <div class="mb-1">Image Preview</div>
-                            <img width="300" src="{{ asset($about_cache->image) }}" alt="">
+                          @if ($is_media_exists == 1)
+                          <div class="col-5 mt-3">
+                            <div class="mb-1">Media Preview</div>
+                            @if (strpos($about_cache->media, 'mp4') !== false)
+                            <video width="100%" height="450" controls>
+                              <source src="{{ asset($about_cache->media) }}" type="video/mp4">
+                              Your browser does not support the video tag.
+                            </video>
+                        @else
+                          <img src="{{ asset($about_cache->media) }}" width="100%" alt="">
+                        @endif
                           </div>
                           @endif
                           <div class="col-12 mt-3">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="show_image" 
-                              {{ isset($about_cache->show_image) && $about_cache->show_image == 1 ? 'checked' : '' }}>
+                              <input class="form-check-input" type="checkbox" name="show_media" 
+                              {{ isset($about_cache->show_media) && $about_cache->show_media == 1 ? 'checked' : '' }}>
                               <label class="form-check-label">
-                                Show Image
+                                Show media
                               </label>
                             </div>
                           </div>
@@ -71,7 +78,5 @@
 @include('admin.role.modals')
 
 @include('admin.includes._vendor_scripts')
-
-@include('admin.includes.scripts.tinymce')
 
 @include('admin.includes.footer')

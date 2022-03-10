@@ -31,6 +31,14 @@ class PostController extends Controller
         //
     }
 
+    public function advocacies_view(GeneralSetting $setting) { 
+        $page_title = "Advocacies | " . $setting::getAppName();
+        $posts = Post::where('category', 'advocacy')->paginate(10);
+        $category = 'advocacy';
+        $post_text = "Advocacies";
+        return view('admin.manage-pages.post.index', compact('page_title', 'posts', 'category', 'post_text'));
+    }
+
     public function events_view(GeneralSetting $setting) { 
         $page_title = "Events | " . $setting::getAppName();
         $posts = Post::where('category', 'event')->paginate(10);
@@ -73,12 +81,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $img_path = Utils::imageUpdoad($request);
+        $img_path = Utils::fileUpdoad($request);
         $inputs = $request->all();
         if ($img_path) {
             $inputs['image'] = $img_path;
         }
         Post::create($inputs);
+        Cache::forget($request->category . '_cache');
         return redirect()->back()->with('success', $request->category.' was saved successfully.'); 
     }
 
@@ -113,12 +122,13 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $img_path = Utils::imageUpdoad($request);
+        $img_path = Utils::fileUpdoad($request);
         $inputs = $request->except('_token');
         if ($img_path) {
             $inputs['image'] = $img_path;
         }
         Post::where('id', $id)->update($inputs);
+        Cache::forget($request->category . '_cache');
         return redirect()->back()->with('success', $request->category.' was update successfully.');
     }
 

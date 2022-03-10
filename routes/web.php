@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SliderBannerController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ManagePageController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\ContactUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/manage-page/about', [ManagePageController::class, 'about_view']);
     Route::post('/manage-page/update-about', [ManagePageController::class, 'updateAboutContent']);
 
+    Route::get('/manage-page/privacy-policy', [ManagePageController::class, 'privacy_policy_view']);
+    Route::post('/manage-page/update-privacy-policy', [ManagePageController::class, 'updatePrivacyPolicy']);
+
+
     Route::resource('/manage-site/gallery', GalleryController::class);
     Route::post('/manage-site/gallery/update/{id}', [GalleryController::class, 'update']);
     Route::post('/manage-site/gallery/fb-photos-sync', [GalleryController::class, 'getFreshFbPhotos']);
@@ -70,6 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/slider', SliderController::class);
 
     Route::post('/post/update/{id}', [PostController::class, 'update']);
+    Route::get('/post/advocacies', [PostController::class, 'advocacies_view']);
     Route::get('/post/events', [PostController::class, 'events_view']);
     Route::get('/post/projects', [PostController::class, 'projects_view']);
     Route::get('/post/news', [PostController::class, 'news_view']);
@@ -82,3 +88,5 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::post('/send-mail', [SubscriptionController::class, 'sendMail'])->name('sendMail');
 Route::get('/subscription/confirm', [SubscriptionController::class, 'confirmSubscription']);
+
+Route::post('/contact-us-send', [ContactUsController::class, 'sendMail']);

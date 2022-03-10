@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\Subscription;
 class Utils
 {
-    public function imageUpdoad($request, $folder_to_save = "img", $root = "assets/") {
+    public function fileUpdoad($request, $folder_to_save = "img", $root = "assets/") {
         $img_path = "";
         if($request->hasFile('image')){
             $root = 'assets/';       
@@ -84,6 +84,7 @@ class Utils
             $message = Utils::confirmSubscriptionTemplate($confirmation_link);
         }
         Mail::to($email)->send(new Mailer($subject, $message));
+        return true;
     }
 
     public static function confirmSubscriptionTemplate($confirmation_link) {

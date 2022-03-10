@@ -42,19 +42,28 @@
       <div class="container" data-aos="fade-up">
         <div class="row">
           @php
-              $show_image = isset($about->show_image) && $about->show_image ? $about->show_image : 0;
-              $cover_img = isset($about->image) && strlen($about->image) > 0 ? $about->image : "";
+              $show_media = isset($about->show_media) && $about->show_media ? $about->show_media : 0;
+              $media = isset($about->media) && strlen($about->media) > 0 ? $about->media : "";
           @endphp
 
-          @if ($show_image == 1)
+          @if ($show_media == 1)
 
           <div class="col-lg-6 about-img">
-            <img src="{{ asset($cover_img) }}" alt="">
+
+            @if (strpos($media, 'mp4') !== false)
+                <video width="100%" height="450" autoplay="autoplay" muted controls>
+                  <source src="{{ asset($media) }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            @else
+              <img src="{{ asset($media) }}" width="100%" alt="">
+            @endif
+
           </div>
 
           @endif
           
-          <div class="col-lg-{{ $show_image==1 ? '6' : '12' }} content">
+          <div class="col-lg-{{ $show_media==1 ? '6' : '12' }} content">
 
             <h2>About Us</h2>
 
@@ -71,53 +80,55 @@
       <div class="container" data-aos="fade-up">
         <div class="section-header">
           <h2>Advocacies</h2>
-          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim
-            export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export
-            irure minim illum fore</p>
         </div>
 
         <div class="row gy-4">
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="box">
-              <div class="icon"><i class="bi bi-briefcase"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                occaecati cupiditate non provident etiro rabeta lingo.</p>
+          @foreach ($advocacies as $item)
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="box">
+                <h4 class="title"><a href="">{{ $item->title }}</a></h4>
+                <p class="description">{{ $item->description }}</p>
+              </div>
             </div>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="box">
-              <div class="icon"><i class="bi bi-card-checklist"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat tarad limino ata nodera clas.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="box">
-              <div class="icon"><i class="bi bi-bar-chart"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur trinige zareta lobur trade.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="box">
-              <div class="icon"><i class="bi bi-binoculars"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum rideta zanox satirente madera</p>
-            </div>
-          </div>
+          @endforeach
 
         </div>
 
       </div>
     </section><!-- End Services Section -->
+
+    
+    <section id="projects" class="posts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Projects</h2>
+        </div>
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          @foreach ($projects as $item)
+            @php
+                $title = $item->title ? $item->title : "";
+                $link = $item->link ? $item->link : "";
+                $description = $item->description && strlen($item->description) > 440 ? substr($item->description, 0, 440) . "..." : $item->description;
+            @endphp
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+              <div class="post-item">
+                <img src="{{ asset($item->image) }}" class="img-fluid" alt="...">
+                <div class="post-content">
+
+                  <h3><a target="_blank" href="{{ $link }}">{{ $title }}</a></h3>
+                  <p>{{ $description }}</p>
+                </div>
+              </div>
+            </div> <!-- End post Item-->
+          @endforeach
+
+        </div>
+
+      </div>
+    </section>
 
     <!-- ======= Clients Section ======= -->
     <section id="clients">
@@ -141,19 +152,20 @@
       </div>
     </section><!-- End Clients Section -->
 
-    <section class="posts">
+
+    <section id="events" class="posts">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Projects</h2>
+          <h2>Events</h2>
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-          @foreach ($projects as $item)
+          @foreach ($events as $item)
             @php
                 $title = $item->title ? $item->title : "";
                 $link = $item->link ? $item->link : "";
-                $description = $item->description && strlen($item->description) > 140 ? substr($item->description, 0, 140) . "..." : $item->description;
+                $description = $item->description && strlen($item->description) > 440 ? substr($item->description, 0, 440) . "..." : $item->description;
             @endphp
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div class="post-item">
@@ -173,7 +185,7 @@
     </section>
 
         <!-- ======= Popular posts Section ======= -->
-        <section id="popular-posts" class="posts">
+        <section id="news" class="posts">
           <div class="container" data-aos="fade-up">
     
             <div class="section-title">
@@ -206,42 +218,6 @@
           </div>
         </section><!-- End Popular posts Section -->
 
-    
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts section-bg">
-      <div class="container">
-
-        <div class="row counters">
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1"
-              class="purecounter"></span>
-            <p>Years of existence</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="1000" data-purecounter-duration="1"
-              class="purecounter"></span>
-            <p>Scholars helped</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1"
-              class="purecounter"></span>
-            <p>Financial aid recipients</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
-              class="purecounter"></span>
-            <p>Bills authored/co-authored</p>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact">
@@ -287,17 +263,18 @@
 
       <div class="container">
         <div class="form">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form action="/contact-us/send" method="post" role="form" class="php-email-form" id="form-contact">
+            @csrf
             <div class="row">
               <div class="form-group col-md-6">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
               </div>
               <div class="form-group col-md-6 mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
               </div>
             </div>
             <div class="form-group mt-3">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              <input type="text" class="form-control" name="subject" placeholder="Subject" required>
             </div>
             <div class="form-group mt-3">
               <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
@@ -317,5 +294,48 @@
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $(function() {
+
+     $('video').on('ended', function () {
+       this.load();
+       this.play();
+     });
+
+     $('#form-contact').submit(function() {
+        let btn = $(this).find('button');
+        btn.prop('disabled', true);
+        btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+        $('.sent-message,.error-message').css('display', 'none');
+
+        $.ajax({
+            type: 'POST',
+            url: '/contact-us-send',
+            data: $(this).serialize()
+        })
+        .done(function(data){
+            console.log(data)
+            if (data.status == 'success') {
+              $('.sent-message').css('display', 'block')
+            }
+            else {
+              $('.error-message').css('display', 'block');
+              $('.error-message').text('Failed sending email, please try again.')
+            }
+            btn.css('display', 'none');
+        })
+        .fail(function() {
+          btn.prop('disabled', false);
+          btn.html('<i class="bi bi-telegram"></i> Send');
+          $('.error-message').css('display', 'block');
+          $('.error-message').text('Failed sending email, please try again.')
+        });
+
+        return false;                       
+        });
+    });
+  </script>
 
  @include('includes.footer')

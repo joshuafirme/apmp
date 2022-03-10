@@ -22,8 +22,7 @@
        
         <li>
           <a class="nav-link {{ \Request::is('users') ? '' : "collapsed" }}" href="{{url('/users')}}">
-            <i class="bi bi-gear"></i>
-            <span>List</span>
+            <i class="bi bi-circle"></i><span>List</span>
           </a>
         </li>
         <li>
@@ -37,39 +36,30 @@
       <a class="nav-link collapsed" data-bs-target="#manage-site-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-gear"></i><span>Manage Site</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <ul id="manage-site-nav" class="nav-content collapse {{ \Request::is('manage-site/*') ? 'show' : "" }}" data-bs-parent="#sidebar-nav">
+      <ul id="manage-site-nav" class="nav-content collapse {{ \Request::is('manage-site/*') || \Request::is('post/*') ? 'show' : "" }}" data-bs-parent="#sidebar-nav">
        
-      <li>
-        <a class="nav-link {{ \Request::is('manage-site/general-settings') ? '' : "collapsed" }}" href="{{url('/manage-site/general-settings')}}">
-          <i class="bi bi-gear"></i>
-          <span>General Settings</span>
-        </a>
-      </li>
-      <li>
-        <a class="nav-link {{ \Request::is('manage-site/homepage-settings') ? '' : "collapsed" }}" href="{{url('/manage-site/homepage-settings')}}">
-          <i class="bi bi-circle"></i><span>Home Page</span>
-        </a>
-      </li>
-      <li>
-        <a class="nav-link {{ \Request::is('manage-site/gallery') ? '' : "collapsed" }}" href="{{url('/manage-site/gallery')}}">
-          <i class="bi bi-circle"></i><span>Gallery</span>
-        </a>
-      </li>
-
-      </ul>
-
-      <a class="nav-link collapsed" data-bs-target="#manage-pages-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-card-text"></i><span>Manage Pages</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="manage-pages-nav" class="nav-content collapse {{ \Request::is('manage-page/*') || \Request::is('post/*') ? 'show' : "" }}" data-bs-parent="#sidebar-nav">
-       
-      <li>
-        <li>
-          <a class="nav-link {{ \Request::is('manage-page/about') ? '' : "collapsed" }}" href="{{url('/manage-page/about')}}">
-            <i class="bi bi-circle"></i><span>About</span>
-          </a>
-        </li>
-        <li>
+          <li>
+            <a class="nav-link {{ \Request::is('manage-site/general-settings') ? '' : "collapsed" }}" href="{{url('/manage-site/general-settings')}}">
+              <i class="bi bi-circle"></i><span>General Settings</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link {{ \Request::is('manage-site/homepage-settings') ? '' : "collapsed" }}" href="{{url('/manage-site/homepage-settings')}}">
+              <i class="bi bi-circle"></i><span>Home Page</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link {{ \Request::is('manage-site/gallery') ? '' : "collapsed" }}" href="{{url('/manage-site/gallery')}}">
+              <i class="bi bi-circle"></i><span>Gallery</span>
+            </a>
+          </li>
+          
+          <li>
+            <a class="nav-link {{ \Request::is('post/advocacies') ? '' : "collapsed" }}" href="{{url('/post/advocacies')}}">
+              <i class="bi bi-circle"></i><span>Advocacies</span>
+            </a>
+          </li>
+          <li>
           <a class="nav-link {{ \Request::is('post/events') ? '' : "collapsed" }}" href="{{url('/post/events')}}">
             <i class="bi bi-circle"></i><span>Events</span>
           </a>
@@ -84,7 +74,29 @@
             <i class="bi bi-circle"></i><span>News</span>
           </a>
         </li>
-      </li>
+        <li>
+          <a class="nav-link {{ \Request::is('manage-site/blog') ? '' : "collapsed" }}" href="{{url('/manage-site/blog')}}">
+            <i class="bi bi-circle"></i><span>Blog</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <a class="nav-link collapsed" data-bs-target="#manage-pages-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-card-text"></i><span>Manage Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="manage-pages-nav" class="nav-content collapse {{ \Request::is('manage-page/*') ? 'show' : "" }}" data-bs-parent="#sidebar-nav">
+       
+        <li>
+          <a class="nav-link {{ \Request::is('manage-page/about') ? '' : "collapsed" }}" href="{{url('/manage-page/about')}}">
+            <i class="bi bi-circle"></i><span>About</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link {{ \Request::is('manage-page/privacy-policy') ? '' : "collapsed" }}" href="{{url('/manage-page/privacy-policy')}}">
+            <i class="bi bi-circle"></i><span>Privacy Policy</span>
+          </a>
+        </li>
 
       </ul>
 

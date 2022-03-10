@@ -59,7 +59,7 @@ body {
     line-height: 0;
   }
   .back-to-top:hover {
-    background: #71dfbe;
+    background: #DC0100;
     color: #fff;
   }
   .back-to-top.active {
@@ -643,7 +643,6 @@ body {
     -webkit-text-fill-color: transparent;
   }
   #services .box h4 {
-    margin-left: 100px;
     font-weight: 700;
     margin-bottom: 15px;
     font-size: 22px;
@@ -653,7 +652,6 @@ body {
   }
   #services .box p {
     font-size: 14px;
-    margin-left: 100px;
     margin-bottom: 0;
     line-height: 24px;
   }

@@ -27,16 +27,26 @@ class ManagePageController extends Controller
     }
 
     public function updateAboutContent() { 
-
-        $img_path = Utils::imageUpdoad(request());
-        $show_image = request()->show_image == 'on' ? 1 : 0;
+  
+        $img_path = Utils::fileUpdoad(request());
+        $show_media = request()->show_media == 'on' ? 1 : 0;
         
         $data = array(
             "about_content" => request()->about_content,
-            "image" => $img_path,
-            "show_image" => $show_image
+            "media" => $img_path,
+            "show_media" => $show_media
         );
         Cache::put('about_cache', json_encode($data));
+        return redirect()->back()->with('success', 'Data was saved successfully.'); 
+    }
+
+    public function privacy_policy_view(GeneralSetting $setting) { 
+        $page_title = "Privacy Policy | " . $setting::getAppName();
+        return view('admin.manage-pages.privacy-policy.index', compact('page_title'));
+    }
+
+    public function updatePrivacyPolicy() {
+        Cache::put('privacy_policy_cache', request()->privacy_policy);
         return redirect()->back()->with('success', 'Data was saved successfully.'); 
     }
 }
