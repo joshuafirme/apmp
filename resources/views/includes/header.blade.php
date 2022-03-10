@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  @php
+      $css_hash = md5(date("Y-m-d H:i:s"));
+  @endphp
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -27,7 +29,7 @@
   <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{{asset('assets/css/landing.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/css/landing.css?v=@php echo $css_hash; @endphp')}}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Reveal - v4.7.0
