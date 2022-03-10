@@ -141,37 +141,70 @@
       </div>
     </section><!-- End Clients Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+    <section class="posts">
       <div class="container" data-aos="fade-up">
+
         <div class="section-header">
           <h2>Projects</h2>
         </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
           @foreach ($projects as $item)
             @php
                 $title = $item->title ? $item->title : "";
                 $link = $item->link ? $item->link : "";
                 $description = $item->description && strlen($item->description) > 140 ? substr($item->description, 0, 140) . "..." : $item->description;
             @endphp
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <a href="{{ asset($item->image) }}" data-gallery="portfolioGallery"
-                class="portfolio-lightbox preview-link" title="{{ $title }}"><img src="{{ asset($item->image) }}" class="img-fluid" style="max-height: 350px" alt=""></a>
-              <div class="portfolio-info">
-                <h4>{{ $title }}</h4>
-                <p>{{ $description }}</p>
-                <a href="{{ $link }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+              <div class="post-item">
+                <img src="{{ asset($item->image) }}" class="img-fluid" alt="...">
+                <div class="post-content">
+
+                  <h3><a target="_blank" href="{{ $link }}">{{ $title }}</a></h3>
+                  <p>{{ $description }}</p>
+                </div>
               </div>
-            </div>
+            </div> <!-- End post Item-->
           @endforeach
 
         </div>
-            
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </section>
+
+        <!-- ======= Popular posts Section ======= -->
+        <section id="popular-posts" class="posts">
+          <div class="container" data-aos="fade-up">
+    
+            <div class="section-title">
+              <h2>News</h2>
+              <p>Latest News</p>
+            </div>
+    
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+    
+              @foreach ($news as $item)
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="post-item">
+                  <img src="{{ asset($item->image) }}" class="img-fluid" alt="...">
+                  <div class="post-content">
+                    @php
+                        $title = $item->title ? $item->title : "";
+                        $link = $item->link ? $item->link : "";
+                        $description = $item->description && strlen($item->description) > 240 ? substr($item->description, 0, 240) . "..." : $item->description;
+                    @endphp
+                    <h3><a href="post-details.html">{{ $title }}</a></h3>
+                    <p>{{ $description }}</p>
+                    <a target="_blank" href="{{ $link }}">Read more ></a>
+                  </div>
+                </div>
+              </div> <!-- End post Item-->
+              @endforeach
+    
+            </div>
+    
+          </div>
+        </section><!-- End Popular posts Section -->
 
     
 

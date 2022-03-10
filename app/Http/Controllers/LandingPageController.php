@@ -27,9 +27,11 @@ class LandingPageController extends Controller
 
         $events = Post::where('category', 'event')->get();
 
+        $news = Post::where('category', 'news')->get();
+
         $page_title = $setting::getHomePageTitle();
 
-        return view('index', compact('page_title', 'slider_banner', 'slider', 'about', 'contact', 'projects', 'events'));
+        return view('index', compact('page_title', 'slider_banner', 'slider', 'about', 'contact', 'projects', 'events', 'news'));
     }
 
 }
