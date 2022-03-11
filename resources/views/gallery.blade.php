@@ -37,7 +37,7 @@
             @foreach ($gallery as $item)
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 <div class="portfolio-wrap">
-                  <img src="{{ $item->image }}" class="img-fluid" alt="">
+                  <img src="{{ asset($item->image) }}" class="img-fluid" alt="">
                   <div class="portfolio-info">
                     <h4>{{ $item->title }}</h4>
                     <p>{{ $item->description }}</p>
