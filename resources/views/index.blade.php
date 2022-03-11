@@ -75,8 +75,8 @@
       </div>
     </section><!-- End About Section -->
 
-    <!-- ======= Services Section ======= -->
-    <section id="services">
+    <!-- ======= advocacies section ======= -->
+    <section id="advocacies">
       <div class="container" data-aos="fade-up">
         <div class="section-header">
           <h2>Advocacies</h2>
@@ -87,7 +87,7 @@
           @foreach ($advocacies as $item)
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
               <div class="box">
-                <h4 class="title"><a href="">{{ $item->title }}</a></h4>
+                <h4 class="title">{{ $item->title }}</h4>
                 <p class="description">{{ $item->description }}</p>
               </div>
             </div>

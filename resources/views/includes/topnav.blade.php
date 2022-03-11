@@ -15,22 +15,22 @@
             @endphp
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           @if (isset($header->about) && $header->about == 'on')
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/home#about')}}">About</a></li>
           @endif
           @if (isset($header->advocacies) && $header->advocacies == 'on')
-          <li><a class="nav-link scrollto" href="#services">Advocacies</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/home#advocacies')}}">Advocacies</a></li>
           @endif
           @if (isset($header->projects) && $header->projects == 'on')
-          <li><a class="nav-link scrollto " href="#projects">Projects</a></li>
+          <li><a class="nav-link scrollto " href="{{url('/home#projects')}}">Projects</a></li>
           @endif
           @if (isset($header->events) && $header->events == 'on')
-          <li><a class="nav-link scrollto " href="#events">Events</a></li>
+          <li><a class="nav-link scrollto " href="{{url('/home#events')}}">Events</a></li>
           @endif
           @if (isset($header->news) && $header->news == 'on')
-          <li><a class="nav-link scrollto " href="#news">News</a></li>
+          <li><a class="nav-link scrollto " href="{{url('/home#news')}}">News</a></li>
           @endif
           @if (isset($header->contact) && $header->contact == 'on')
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/home#contact')}}">Contact</a></li>
           @endif
           <li class="dropdown"><a href="#"><span>Others</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
