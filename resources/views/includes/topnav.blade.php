@@ -41,7 +41,7 @@
                   <li><a href="{{ url('/blog') }}">Blog</a></li>
               @endif
               @if (isset($header->downloads) && $header->downloads == 'on')
-                  <li><a href="{{ url('/downloads') }}">Downloads</a></li>
+                  <li><a href="{{ url('/download') }}">Downloads</a></li>
               @endif
             </ul>
           </li>
