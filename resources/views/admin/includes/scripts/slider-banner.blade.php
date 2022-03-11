@@ -15,7 +15,7 @@
             $('#change-password').remove();
         }
         
-        $('#btn-add-slider-banner').click(function(event) {
+        $('.open-modal').click(function(event) {
 
             let modal = $('#sliderBannerModal');
 
