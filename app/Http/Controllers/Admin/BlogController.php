@@ -12,7 +12,7 @@ use Utils;
 
 class BlogController extends Controller
 {
-    private $page = "Manage Site";
+  /*  private $page = "Manage Site";
 
     public function __construct()
     {
@@ -20,7 +20,7 @@ class BlogController extends Controller
             if (User::isPermitted($this->page)) { return $next($request); }
             return abort(401);
         });
-    }
+    }*/
     /**
      * Display a listing of the resource.
      *
