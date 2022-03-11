@@ -37,7 +37,7 @@
                     <h2 style="font-weight: 700">{{ $item->title }}</h2>
                     <h3>{{ strlen($item->description) > 80 ? substr($item->description, 0, 80) . "..." : $item->description }}</h3>
                   </a>
-                  <p style="font-style: italic">Posted by Start Bootstrap on January 31, 2020</p>
+                  <p style="font-style: italic">Posted by {{ $item->posted_by }} on {{ Utils::formatDate($item->created_at) }}</p>
                   <hr>
                 </div>
               </div>
