@@ -12,15 +12,7 @@ use Utils;
 
 class DownloadsController extends Controller
 {
-    private $page = "Manage Site";
-
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (User::isPermitted($this->page)) { return $next($request); }
-            return abort(401);
-        });
-    }
+ 
     /**
      * Display a listing of the resource.
      *
