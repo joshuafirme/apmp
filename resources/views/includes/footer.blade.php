@@ -68,7 +68,8 @@
 
   <script>
     $(function(){
-      $('#form-news-letter').submit(function() {
+      if ($('#form-news-letter').length > 0) {
+        $('#form-news-letter').submit(function() {
         let btn = $(this).find('#btn-send');
         btn.prop('disabled', true);
         btn.val('Please wait...');
@@ -104,6 +105,7 @@
 
         return false;                       
         });
+      }
     });
   </script>
 
