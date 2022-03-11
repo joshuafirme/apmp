@@ -198,7 +198,7 @@
               @foreach ($news as $item)
               <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                 <div class="post-item">
-                  <img style="max-height: 340px;" src="{{ asset($item->image) }}" class="img-fluid" alt="...">
+                  <img src="{{ asset($item->image) }}" class="img-fluid" style="max-height: 320px;" alt="...">
                   <div class="post-content">
                     @php
                         $title = $item->title ? $item->title : "";
