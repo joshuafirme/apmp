@@ -18,7 +18,8 @@
               <h2>Blog</h2>
               <ol>
                 <li><a href="{{ url('/home') }}">Home</a></li>
-                <li>Blog</li>
+                <li><a href="{{ url('/blog') }}">Blog</a></li>
+                <li>{{ $blog->title }}</li>
               </ol>
             </div>
     
