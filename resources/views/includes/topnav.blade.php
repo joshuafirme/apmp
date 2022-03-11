@@ -3,7 +3,7 @@
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="index.html">Pamilya Muna <span>Party List</span></a></h1>
+        <h1><a href="{{ url('/home') }}">Pamilya Muna <span>Party List</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
