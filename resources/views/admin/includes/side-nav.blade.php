@@ -79,6 +79,11 @@
             <i class="bi bi-circle"></i><span>Blog</span>
           </a>
         </li>
+        <li>
+          <a class="nav-link {{ \Request::is('manage-site/downloads') ? '' : "collapsed" }}" href="{{url('/manage-site/downloads')}}">
+            <i class="bi bi-circle"></i><span>Downloads</span>
+          </a>
+        </li>
 
       </ul>
 

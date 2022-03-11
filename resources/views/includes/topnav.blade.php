@@ -40,6 +40,9 @@
               @if (isset($header->blog) && $header->blog == 'on')
                   <li><a href="{{ url('/blog') }}">Blog</a></li>
               @endif
+              @if (isset($header->downloads) && $header->downloads == 'on')
+                  <li><a href="{{ url('/downloads') }}">Downloads</a></li>
+              @endif
             </ul>
           </li>
         </ul>

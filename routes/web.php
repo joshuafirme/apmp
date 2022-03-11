@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ManagePageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\DownloadsController;
 use App\Http\Controllers\ContactUsController;
 
 /*
@@ -33,6 +34,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [LandingPageController::class, 'index']);
+
+Route::get('/download-file/{file_name}', [DownloadsController::class, 'downloadFile']);
+Route::get('/download', [DownloadsController::class, 'downloads_view']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -84,7 +88,12 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/blog/update/{id}', [BlogController::class, 'update']);
     Route::resource('/manage-site/blog', BlogController::class);
+
+    Route::post('/downloads/update/{id}', [DownloadsController::class, 'update']);
+    Route::resource('/manage-site/downloads', DownloadsController::class);
 });
+
+
 
 Route::get('/blog', [BlogController::class, 'blog_view']);
 Route::get('/blog/read/{id}', [BlogController::class, 'read']);

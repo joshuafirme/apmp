@@ -57,6 +57,7 @@ class HomePageSettingsController extends Controller
             "contact" => request()->contact,
             "gallery" => request()->gallery,
             "blog" => request()->blog,
+            "downloads" => request()->downloads,
         );
 
         Cache::put('header_cache', json_encode($data));

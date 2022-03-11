@@ -7,18 +7,29 @@ use Mail;
 use App\Mail\Mailer;
 use App\Models\User;
 use App\Models\Subscription;
+use File;
 class Utils
 {
-    public function fileUpdoad($request, $folder_to_save = "img", $root = "assets/") {
+    public function fileUpdoad($request, $folder_to_save = "img", $root = "assets/", $file_name = "") {
         $img_path = "";
-        if($request->hasFile('image')){
-            $root = 'assets/';       
-            $image_name = uniqid() . "." . $request->image->extension();
-            $request->image->move(public_path($root . $folder_to_save), $image_name);
-            $img_path = $root . $folder_to_save . "/" . $image_name;
+        if($request->hasFile('image')){ 
+            if ($file_name=="") {
+                $file_name = uniqid() . "." . $request->image->extension();
+            }
+            $request->image->move(public_path($root . $folder_to_save), $file_name);
+            $img_path = $root . $folder_to_save . "/" . $file_name;
         }
 
         return $img_path;
+    }
+
+    public function removeFile($file_path)
+    {
+        if(File::exists(public_path($file_path))){
+            File::delete(public_path($file_path));
+            return true;
+        }
+        return 'file_not_exists.';
     }
 
     public function formatDate($created_at) {

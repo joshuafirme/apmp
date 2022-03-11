@@ -27,13 +27,18 @@ class ManagePageController extends Controller
     }
 
     public function updateAboutContent() { 
-  
-        $img_path = Utils::fileUpdoad(request());
+   
+        $file_path = Utils::fileUpdoad(request());
         $show_media = request()->show_media == 'on' ? 1 : 0;
-        
+        $old_cache = json_decode(Cache::get('about_cache'));
+
+        if (isset($old_cache->media)) {
+            Utils::removeFile($old_cache->media);
+        }
+
         $data = array(
             "about_content" => request()->about_content,
-            "media" => $img_path,
+            "media" => $file_path,
             "show_media" => $show_media
         );
         Cache::put('about_cache', json_encode($data));

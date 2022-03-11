@@ -44,7 +44,7 @@
                     <div class="portfolio-links">
                       <a href="{{ $item->image }}" data-gallery="portfolioGallery"
                         class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                      <a href="{{ $item->link }}" title="More Details"><i class="bx bx-link"></i></a>
+                      <a target="_blank" href="{{ $item->link }}" title="More Details"><i class="bx bx-link"></i></a>
                     </div>
                   </div>
                 </div>
