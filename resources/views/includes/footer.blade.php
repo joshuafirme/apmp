@@ -32,10 +32,14 @@
           <div class="col-lg-5 col-md-6 footer-newsletter">
             <h4>Join Our Newsletter</h4>
             <p>Subscribe to our newsletter to receive updates via email</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+            <form action="/send-mail" method="post" role="form" id="form-news-letter">
+              @csrf
+              <input type="email" name="email"><input id="btn-send" type="submit" value="Subscribe">
             </form>
-
+            <div class="my-3">
+              <div class="error-msg"></div>
+              <div class="sent-msg">Thank you, your subscription request was successful! Please check your email inbox to confirm.</div>
+            </div>
           </div>
 
         </div>
@@ -61,6 +65,47 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('assets/js/landing.js')}}"></script>
+
+  <script>
+    $(function(){
+      $('#form-news-letter').submit(function() {
+        let btn = $(this).find('#btn-send');
+        btn.prop('disabled', true);
+        btn.val('Please wait...');
+        $('.sent-msg,.error-msg').css('display', 'none');
+
+        $.ajax({
+            type: 'POST',
+            url: '/send-mail',
+            data: $(this).serialize()
+        })
+        .done(function(data){
+            console.log(data)
+            if (data.status == 'success') {
+              $('.sent-msg').css('display', 'block');
+            }
+            else if (data.status == 'email_exists') {
+              $('.error-msg').css('display', 'block');
+              $('.error-msg').text('Email is already exists in our system.')
+            }
+            else {
+              $('.error-msg').css('display', 'block');
+              $('.error-msg').text('Failed sending email, please try again.')
+            }
+            btn.prop('disabled', false);
+            btn.val('Subscribe');
+        })
+        .fail(function() {
+          btn.prop('disabled', false);
+          btn.val('Subscribe');
+          $('.error-msg').css('display', 'block');
+          $('.error-msg').text('Failed sending email, please try again.')
+        });
+
+        return false;                       
+        });
+    });
+  </script>
 
 </body>
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Subscription;
 use App\Models\GeneralSetting;
 use Utils;
+use Cache;
 
 class SubscriptionController extends Controller
 {
@@ -51,20 +52,31 @@ class SubscriptionController extends Controller
 
         if ($email) {
             if (Utils::isEmailExists($email)) {
-                return redirect()->back()->with('danger', 'Email is already exists.');
+                return response()->json([
+                    'status' =>  'email_exists'
+                ], 200);
             }
             $mail_type = 'confirm_subscription';
             
-            Utils::sendMail($email, $subject = null, $message = null, $mail_type);
+            if (Utils::sendMail($email, $subject = null, $message = null, $mail_type)) {
+                return response()->json([
+                    'status' =>  'success'
+                ], 200);
+            }
     
-            return redirect()->back()->with('success', 'Thank you, your subscription request was successful! Please check your email inbox to confirm.');
         }
-        return redirect()->back()->with('danger', 'Please enter your email.');
+        return response()->json([
+            'status' =>  'error'
+        ], 200);
     }
 
-    public function confirmSubscription() {
+    public function confirmSubscription(GeneralSetting $setting) {
 
         $key = request()->key;
+
+        $page_title = "Privacy Policy | " . $setting::getAppName();
+
+        $contact = json_decode(Cache::get('contact_and_footer_cache'));
 
         $s = new Subscription;
         
@@ -73,16 +85,18 @@ class SubscriptionController extends Controller
             if ($s->isSubscribed($key)) {
                 $message = "It looks like you've already confirmed your subscription. No further action is required.";
                 
-                return view('subscription-confirm', compact('message', 'type'));
+                return view('subscription-confirm', compact('page_title','message', 'type'));
             }
             
             Subscription::where('key', $key)->update([ 'status' => 1 ]);
             $message = "Subscription was success";
-            return view('subscription-confirm', compact('message', 'type'));
+            return view('subscription-confirm', compact('page_title','message', 'type'));
         }
         $type = 'text-danger';
         $message = "Subscription key is invalid.";
-        return view('subscription-confirm', compact('message', 'type'));
+
+
+        return view('subscription-confirm', compact('page_title', 'contact', 'message', 'type'));
     }
 
     public function destroy(Subscription $subscriber)

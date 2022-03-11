@@ -1235,14 +1235,14 @@ body {
       margin-top: 20px;
     }
   }
-  #contact .php-email-form .validate {
+  .validate {
     display: none;
     color: red;
     margin: 0 0 15px 0;
     font-weight: 400;
     font-size: 13px;
   }
-  #contact .php-email-form .error-message {
+  .error-message, .error-msg {
     display: none;
     color: #fff;
     background: #ed3c0d;
@@ -1250,10 +1250,10 @@ body {
     padding: 15px;
     font-weight: 600;
   }
-  #contact .php-email-form .error-message br + br {
+  .error-message, .error-msg br + br {
     margin-top: 25px;
   }
-  #contact .php-email-form .sent-message {
+  .sent-message, .sent-msg {
     display: none;
     color: #fff;
     background: #18d26e;
@@ -1261,13 +1261,13 @@ body {
     padding: 15px;
     font-weight: 600;
   }
-  #contact .php-email-form .loading {
+  .loading {
     display: none;
     background: #fff;
     text-align: center;
     padding: 15px;
   }
-  #contact .php-email-form .loading:before {
+  .loading:before {
     content: "";
     display: inline-block;
     border-radius: 50%;
@@ -1279,16 +1279,16 @@ body {
     -webkit-animation: animate-loading 1s linear infinite;
     animation: animate-loading 1s linear infinite;
   }
-  #contact .php-email-form input, #contact .php-email-form textarea {
+  input, textarea {
     padding: 10px 14px;
     border-radius: 0;
     box-shadow: none;
     font-size: 15px;
   }
-  #contact .php-email-form input::focus, #contact .php-email-form textarea::focus {
+  input::focus, textarea::focus {
     background-color: #DC0100;
   }
-  #contact .php-email-form button[type=submit] {
+  button[type=submit] {
     background: #DC0100;
     border: 0;
     border-radius: 3px;
@@ -1297,7 +1297,7 @@ body {
     transition: 0.4s;
     cursor: pointer;
   }
-  #contact .php-email-form button[type=submit]:hover {
+  button[type=submit]:hover {
     background: #aa0000;
   }
   @-webkit-keyframes animate-loading {
