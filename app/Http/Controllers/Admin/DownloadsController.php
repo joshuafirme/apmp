@@ -68,7 +68,7 @@ class DownloadsController extends Controller
      */
     public function store(Request $request)
     {
-        $file_name = uniqid() . $request->image->getClientOriginalName();
+        $file_name = $request->image ? uniqid() . "_" . $request->image->getClientOriginalName() : uniqid();
         $file_path = Utils::fileUpdoad($request, '', 'downloads', $file_name);
         $inputs = $request->all();
   

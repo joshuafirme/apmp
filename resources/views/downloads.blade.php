@@ -28,10 +28,10 @@
         <section id="portfolio-details" class="portfolio-details">
           <div class="container">
     
-            <table class="table table-borderless table-hover">
+            <table class="table table-hover">
               <thead>
                 <tr>
-                  <th scope="col">Name</th>
+                  <th scope="col">File name</th>
                   <th scope="col">Description</th>
                   <th scope="col">Action</th>
                 </tr>
