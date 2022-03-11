@@ -34,6 +34,7 @@
                         <h2 style="font-weight: 700">{{ $blog->title }}</h2>
                         <h3>{{ strlen($blog->description) > 80 ? substr($blog->description, 0, 80) . "..." : $blog->description }}</h3>
                       <p style="font-style: italic">Posted by {{ $blog->posted_by }} on {{ Utils::formatDate($blog->created_at) }}</p>
+                      <hr>
                       <br>
                       {!! $blog->blog_content !!}
                     </div>
