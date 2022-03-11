@@ -115,7 +115,7 @@
             @endphp
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div class="post-item">
-                <img style="max-height: 340px;" src="{{ asset($item->image) }}" class="img-fluid" alt="...">
+                <img src="{{ asset($item->image) }}" style="max-height: 320px; object-fit: cover;" alt="...">
                 <div class="post-content">
 
                   <h3><a target="_blank" href="{{ $link }}">{{ $title }}</a></h3>
@@ -169,7 +169,7 @@
             @endphp
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div class="post-item">
-                <img style="max-height: 340px;" src="{{ asset($item->image) }}" class="img-fluid" alt="...">
+                <img src="{{ asset($item->image) }}" style="max-height: 320px; object-fit: cover;" alt="...">
                 <div class="post-content">
 
                   <h3><a target="_blank" href="{{ $link }}">{{ $title }}</a></h3>
@@ -198,7 +198,7 @@
               @foreach ($news as $item)
               <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                 <div class="post-item">
-                  <img src="{{ asset($item->image) }}" class="img-fluid" style="max-height: 310px;" alt="...">
+                  <img src="{{ asset($item->image) }}" style="max-height: 320px; object-fit: cover;" alt="...">
                   <div class="post-content">
                     @php
                         $title = $item->title ? $item->title : "";
