@@ -36,8 +36,11 @@
   </section><!-- End Hero -->
 
   <main id="main">
-
+    @php
+        $header = json_decode(Cache::get('header_cache'));
+    @endphp
     <!-- ======= About Section ======= -->
+    @if (isset($header->about) && $header->about == 'on')
     <section id="about">
       <div class="container" data-aos="fade-up">
         <div class="row">
@@ -74,8 +77,10 @@
 
       </div>
     </section><!-- End About Section -->
+    @endif
 
     <!-- ======= advocacies section ======= -->
+    @if (isset($header->advocacies) && $header->advocacies == 'on')
     <section id="advocacies">
       <div class="container" data-aos="fade-up">
         <div class="section-header">
@@ -97,8 +102,9 @@
 
       </div>
     </section><!-- End Services Section -->
+    @endif
 
-    
+    @if (isset($header->projects) && $header->projects == 'on')
     <section id="projects" class="posts">
       <div class="container" data-aos="fade-up">
 
@@ -129,6 +135,7 @@
 
       </div>
     </section>
+    @endif
 
     <!-- ======= Clients Section ======= -->
     <section id="clients">
@@ -152,7 +159,7 @@
       </div>
     </section><!-- End Clients Section -->
 
-
+    @if (isset($header->events) && $header->events == 'on')
     <section id="events" class="posts">
       <div class="container" data-aos="fade-up">
 
@@ -183,8 +190,10 @@
 
       </div>
     </section>
+    @endif
 
         <!-- ======= Popular posts Section ======= -->
+        @if (isset($header->news) && $header->news == 'on')
         <section id="news" class="posts">
           <div class="container" data-aos="fade-up">
     
@@ -217,9 +226,16 @@
     
           </div>
         </section><!-- End Popular posts Section -->
+        @endif
 
 
+        @php
+            $address = isset($contact->address) ? $contact->address : "";
+            $email = isset($contact->email) ? $contact->email : "";
+            $phone_number = isset($contact->phone_number) ? $contact->phone_number : "";
+        @endphp
     <!-- ======= Contact Section ======= -->
+    @if (isset($header->contact) && $header->contact == 'on')
     <section id="contact">
       <div class="container mt-3" data-aos="fade-up">
         <div class="section-header">
@@ -227,12 +243,6 @@
         </div>
 
         <div class="row contact-info">
-
-          @php
-              $address = isset($contact->address) ? $contact->address : "";
-              $email = isset($contact->email) ? $contact->email : "";
-              $phone_number = isset($contact->phone_number) ? $contact->phone_number : "";
-          @endphp
 
           <div class="col-md-4">
             <div class="contact-address">
@@ -292,6 +302,7 @@
 
       </div>
     </section><!-- End Contact Section -->
+    @endif
 
   </main><!-- End #main -->
 

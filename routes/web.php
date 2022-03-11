@@ -89,6 +89,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/blog', [BlogController::class, 'blog_view']);
 Route::get('/blog/read/{id}', [BlogController::class, 'read']);
 
+Route::get('/privacy-policy', [ManagePageController::class, 'privacy_policy_page_view']);
+
+Route::get('/gallery', [GalleryController::class, 'gallery_view']);
+
 Route::get('/admin/login', [AuthController::class, 'admin_login_view']);
 Route::post('/admin/do-login', [AuthController::class, 'doLogin'])->name('doLogin');
 Route::get('/logout', [AuthController::class, 'logout']);

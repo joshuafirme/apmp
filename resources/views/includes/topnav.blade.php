@@ -13,7 +13,7 @@
             @php
                 $header = json_decode(Cache::get('header_cache'));
             @endphp
-          <li><a class="nav-link scrollto" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/home')}}">Home</a></li>
           @if (isset($header->about) && $header->about == 'on')
           <li><a class="nav-link scrollto" href="{{url('/home#about')}}">About</a></li>
           @endif

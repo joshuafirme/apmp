@@ -45,6 +45,15 @@ class ManagePageController extends Controller
         return view('admin.manage-pages.privacy-policy.index', compact('page_title'));
     }
 
+    public function privacy_policy_page_view(GeneralSetting $setting) { 
+
+        $page_title = "Privacy Policy | " . $setting::getAppName();
+
+        $contact = json_decode(Cache::get('contact_and_footer_cache'));
+
+        return view('privacy-policy', compact('page_title', 'setting', 'contact'));
+    }
+
     public function updatePrivacyPolicy() {
         Cache::put('privacy_policy_cache', request()->privacy_policy);
         return redirect()->back()->with('success', 'Data was saved successfully.'); 

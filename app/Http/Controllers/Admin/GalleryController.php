@@ -45,6 +45,26 @@ class GalleryController extends Controller
         return view('admin.gallery.index', compact('page_title', 'gallery', 'fb_photos', 'gllr_settings'));
     }
 
+    public function gallery_view(GeneralSetting $setting) {
+
+        $page_title = "Gallery | " . $setting::getAppName();
+
+        $gallery = Gallery::paginate(10);
+
+        $fb_photos_cache = Cache::get('fb_photos_cache');
+        if ($fb_photos_cache) { 
+            $fb_photos = $fb_photos_cache;
+        }
+        else {
+            $this->getFreshFbPhotos();
+        }
+        $gllr_settings = json_decode(Cache::get('gallery_settings_cache'));
+
+        $contact = json_decode(Cache::get('contact_and_footer_cache'));
+
+        return view('gallery', compact('page_title', 'setting', 'contact', 'gallery', 'fb_photos', 'gllr_settings'));
+    }
+
     public function updateGallerySettings() {
 
         $use_fb_photos = request()->use_fb_photos == 'on' ? 1 : 0;
