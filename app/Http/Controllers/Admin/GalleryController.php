@@ -52,6 +52,7 @@ class GalleryController extends Controller
         $gallery = Gallery::paginate(10);
 
         $fb_photos_cache = Cache::get('fb_photos_cache');
+        $fb_photos = [];
         if ($fb_photos_cache) { 
             $fb_photos = $fb_photos_cache;
         }
