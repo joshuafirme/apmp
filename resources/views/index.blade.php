@@ -115,7 +115,7 @@
             @endphp
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div class="post-item">
-                <img src="{{ asset($item->image) }}" class="img-fluid" alt="...">
+                <img style="max-height: 380px;" src="{{ asset($item->image) }}" class="img-fluid" alt="...">
                 <div class="post-content">
 
                   <h3><a target="_blank" href="{{ $link }}">{{ $title }}</a></h3>
@@ -169,7 +169,7 @@
             @endphp
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div class="post-item">
-                <img src="{{ asset($item->image) }}" class="img-fluid" alt="...">
+                <img style="max-height: 380px;" src="{{ asset($item->image) }}" class="img-fluid" alt="...">
                 <div class="post-content">
 
                   <h3><a target="_blank" href="{{ $link }}">{{ $title }}</a></h3>
@@ -198,14 +198,14 @@
               @foreach ($news as $item)
               <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                 <div class="post-item">
-                  <img src="{{ asset($item->image) }}" class="img-fluid" alt="...">
+                  <img style="max-height: 380px;" src="{{ asset($item->image) }}" class="img-fluid" alt="...">
                   <div class="post-content">
                     @php
                         $title = $item->title ? $item->title : "";
                         $link = $item->link ? $item->link : "";
                         $description = $item->description && strlen($item->description) > 240 ? substr($item->description, 0, 240) . "..." : $item->description;
                     @endphp
-                    <h3><a href="post-details.html">{{ $title }}</a></h3>
+                    <h3><a href="{{ $link }}">{{ $title }}</a></h3>
                     <p>{{ $description }}</p>
                     <a target="_blank" href="{{ $link }}">Read more ></a>
                   </div>

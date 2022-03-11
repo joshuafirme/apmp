@@ -38,8 +38,10 @@
                           <th scope="col">Title</th>
                           <th scope="col">Description</th>
                           <th scope="col">Link</th>
+                          @if ($category != 'advocacy')
                           <th scope="col">Image</th>
                           <th scope="col">Action</th>
+                          @endif
                         </tr>
                       </thead>
                       <tbody>
@@ -47,9 +49,11 @@
                         @foreach ($posts as $item)
                           <tr id="record-id-{{$item->id}}">
                             <td>{{ $item->title }}</td>
-                            <td>{{ $item->description }}</td>
+                            <td width="40%">{{ $item->description }}</td>
+                            @if ($category != 'advocacy')
                             <td><a target="_blank" href="{{ $item->link }}">{{ $item->link }}</a></td>
                             <td><div class='photo-thumb' style='background: url({{ asset($item->image) }}) 50% 50% no-repeat; background-size:cover;'></div></td>
+                            @endif
                             <td>
                               <a class="btn btn-edit open-modal" post-text="{{ $post_text }}" category="{{ $category }}" modal-type="update" data-info="{{ json_encode($item)}} "><i class="bx bx-edit"></i></a>
                                 <a class="btn delete-record" post-text="{{ $post_text }}" category="{{ $category }}" data-id="{{ $item->id }}" object="post" data-bs-toggle="modal" data-bs-target="#delete-record-modal">

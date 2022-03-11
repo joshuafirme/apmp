@@ -24,6 +24,11 @@
             let modal = $('#postModal');
             modal.modal('show');
 
+            if (category == 'advocacy') {
+                $('[name=link]').parent().remove();
+                $('[name=image]').parent().remove();
+            }
+
 
             let modal_type = $(this).attr('modal-type');
 
