@@ -41,6 +41,16 @@
           {{ isset($header->contact) && $header->contact == 'on' ? 'checked' : "" }}>
           <label class="form-check-label">Contact</label>
         </div>
+        <div class="form-check form-switch mt-2">
+          <input class="form-check-input" type="checkbox" name="gallery"
+          {{ isset($header->gallery) && $header->gallery == 'on' ? 'checked' : "" }}>
+          <label class="form-check-label">Gallery</label>
+        </div>
+        <div class="form-check form-switch mt-2">
+          <input class="form-check-input" type="checkbox" name="blog"
+          {{ isset($header->blog) && $header->blog == 'on' ? 'checked' : "" }}>
+          <label class="form-check-label">Blog</label>
+        </div>
       </div>
       <div class="col-md-12">
         <button class="btn btn-sm btn-primary" type="submit">Save</button>

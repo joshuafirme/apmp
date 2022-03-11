@@ -22,6 +22,8 @@
               <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/blog') }}">Blog</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#news">News</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#news">Gallery</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#news">Blog</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/privacy-policy') }}">Privacy policy</a></li>
             </ul>
           </div>

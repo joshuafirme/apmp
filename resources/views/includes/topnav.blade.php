@@ -14,30 +14,34 @@
                 $header = json_decode(Cache::get('header_cache'));
             @endphp
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">{{ isset($header->about) && $header->about == 'on' ? 'About' : '' }}</a></li>
-          <li><a class="nav-link scrollto" href="#services">{{ isset($header->advocacies) && $header->advocacies == 'on' ? 'Advocacies' : '' }}</a></li>
-          <li><a class="nav-link scrollto " href="#projects">{{ isset($header->projects) && $header->projects == 'on' ? 'Projects' : '' }}</a></li>
-          <li><a class="nav-link scrollto " href="#events">{{ isset($header->events) && $header->events == 'on' ? 'Events' : '' }}</a></li>
-          <li><a class="nav-link scrollto " href="#news">{{ isset($header->news) && $header->news == 'on' ? 'News' : '' }}</a></li>
-          <!--   <li><a class="nav-link scrollto" href="#team">Team</a></li>-->
-          <!--  <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          @if (isset($header->about) && $header->about == 'on')
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          @endif
+          @if (isset($header->advocacies) && $header->advocacies == 'on')
+          <li><a class="nav-link scrollto" href="#services">Advocacies</a></li>
+          @endif
+          @if (isset($header->projects) && $header->projects == 'on')
+          <li><a class="nav-link scrollto " href="#projects">Projects</a></li>
+          @endif
+          @if (isset($header->events) && $header->events == 'on')
+          <li><a class="nav-link scrollto " href="#events">Events</a></li>
+          @endif
+          @if (isset($header->news) && $header->news == 'on')
+          <li><a class="nav-link scrollto " href="#news">News</a></li>
+          @endif
+          @if (isset($header->contact) && $header->contact == 'on')
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          @endif
+          <li class="dropdown"><a href="#"><span>Others</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              @if (isset($header->gallery) && $header->gallery == 'on')
+                  <li><a href="{{ url('/gallery') }}">Gallery</a></li>
+              @endif
+              @if (isset($header->blog) && $header->blog == 'on')
+                  <li><a href="{{ url('/blog') }}">Blog</a></li>
+              @endif
             </ul>
-          </li>-->
-          <li><a class="nav-link scrollto" href="#contact">{{ isset($header->contact) && $header->contact == 'on' ? 'Contact' : '' }}</a></li>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

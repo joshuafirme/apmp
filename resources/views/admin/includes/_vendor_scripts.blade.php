@@ -10,7 +10,7 @@
 <script>
     $(function(){
         if ($('#rich_text_editor').length > 0) {
-        var editor1 = new RichTextEditor("#rich_text_editor"); 
+        var rich_text_editor = new RichTextEditor("#rich_text_editor"); 
     }
     }); 
   </script>

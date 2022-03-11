@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SliderBannerController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ManagePageController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\ContactUsController;
 
 /*
@@ -80,7 +81,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/post/projects', [PostController::class, 'projects_view']);
     Route::get('/post/news', [PostController::class, 'news_view']);
     Route::resource('/post', PostController::class);
+
+    Route::post('/blog/update/{id}', [BlogController::class, 'update']);
+    Route::resource('/manage-site/blog', BlogController::class);
 });
+
+Route::get('/blog', [BlogController::class, 'blog_view']);
+Route::get('/blog/read/{id}', [BlogController::class, 'read']);
 
 Route::get('/admin/login', [AuthController::class, 'admin_login_view']);
 Route::post('/admin/do-login', [AuthController::class, 'doLogin'])->name('doLogin');

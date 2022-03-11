@@ -7,11 +7,11 @@
   <main id="main" class="main">
 
       <div class="pagetitle">
-          <h1>{{ $post_text }}</h1>
+          <h1>Blog</h1>
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item">Admin</li>
-              <li class="breadcrumb-item">{{ $post_text }}</li>
+              <li class="breadcrumb-item">Blog</li>
             </ol>
           </nav>
         </div><!-- End Page Title -->        
@@ -24,8 +24,7 @@
                         @include('includes.alerts')
 
                         <div>
-                          <button type="button" id="btn-create" class="btn btn-sm btn-primary w-auto open-modal" 
-                          post-text="{{ $post_text }}" category="{{ $category }}" modal-type="create">
+                          <button type="button" id="btn-create" class="btn btn-sm btn-primary w-auto open-modal" modal-type="create">
                               Add <i class="bi bi-plus"></i>
                           </button>
                         </div>
@@ -36,23 +35,21 @@
                       <thead>
                         <tr>
                           <th scope="col">Title</th>
-                          <th scope="col">Description</th>
-                          <th scope="col">Link</th>
-                          <th scope="col">Image</th>
+                          <th scope="col" width="40%">Description</th>
+                          <th scope="col" >Date Created</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @if (count($posts))
-                        @foreach ($posts as $item)
+                        @if (count($blog))
+                        @foreach ($blog as $item)
                           <tr id="record-id-{{$item->id}}">
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->description }}</td>
-                            <td><a target="_blank" href="{{ $item->link }}">{{ $item->link }}</a></td>
-                            <td><div class='photo-thumb' style='background: url({{ asset($item->image) }}) 50% 50% no-repeat; background-size:cover;'></div></td>
+                            <td>{{ Utils::formatDate($item->created_at) }}</td>
                             <td>
-                              <a class="btn btn-edit open-modal" post-text="{{ $post_text }}" category="{{ $category }}" modal-type="update" data-info="{{ json_encode($item)}} "><i class="bx bx-edit"></i></a>
-                                <a class="btn delete-record" post-text="{{ $post_text }}" category="{{ $category }}" data-id="{{ $item->id }}" object="post" data-bs-toggle="modal" data-bs-target="#delete-record-modal">
+                              <a class="btn btn-edit open-modal" modal-type="update" data-info="{{ json_encode($item)}} "><i class="bx bx-edit"></i></a>
+                                <a class="btn delete-record" data-id="{{ $item->id }}" object="manage-site/blog" data-bs-toggle="modal" data-bs-target="#delete-record-modal">
                                   <i class="bx bx-trash" style="color: red;"></i>
                                 </a>
                             </td>
@@ -74,7 +71,7 @@
                     <!-- End Tables without borders -->
 
                     @php
-                     echo $posts->links("pagination::bootstrap-4");
+                     echo $blog->links("pagination::bootstrap-4");
                     @endphp
                   </div>
                 </div>
@@ -83,13 +80,13 @@
 
   </main><!-- End #main -->
 
-  @include('admin.manage-pages.post.modals')
+  @include('admin.blog.modals')
 
   @include('admin.includes._vendor_scripts')
 
   @include('admin.includes._global_scripts')
 
-  @include('admin.manage-pages.post.script')
+  @include('admin.blog.script')
 
   @include('admin.includes.footer')
 

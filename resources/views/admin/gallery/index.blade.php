@@ -106,7 +106,7 @@
                               <td><div class='photo-thumb' style='background: url({{ $item['source'] }}) 50% 50% no-repeat; background-size:cover;'></div></td>
                               <td>{{ isset($item['name']) ? $item['name'] : "" }}</td>
                               <td>{{ isset($item['description']) ? $item['description'] : "" }}</td>
-                              <td>{{ isset($item['link']) ? $item['link'] : "" }}</td>
+                              <td><a target="_blank" href="{{ isset($item['link']) ? $item['link'] : "" }}">{{ isset($item['link']) ? $item['link'] : "" }}</a></td>
                             </tr> 
                           @endforeach
                           @else
@@ -142,7 +142,7 @@
                                 <td><img width="200px" src="{{ asset($item->image) }}" alt=""></td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->description }}</td>
-                                <td>{{ $item->link }}</td>
+                                <td><a target="_blank" href="{{ $item->link }}">{{ $item->link }}</a></td>
                                 <td>
                                   <a class="btn btn-edit open-modal" modal-type="update" data-info="{{ json_encode($item)}} "><i class="bx bx-edit"></i></a>
                                   <a class="btn delete-record" data-id="{{ $item->id }}" object="manage-site/gallery" data-bs-toggle="modal" data-bs-target="#delete-record-modal">
