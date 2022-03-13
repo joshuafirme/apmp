@@ -119,7 +119,7 @@
                 $link = $item->link ? $item->link : "";
                 $description = $item->description && strlen($item->description) > 440 ? substr($item->description, 0, 440) . "..." : $item->description;
             @endphp
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="col-lg-4 col-md-6 mt-3 d-flex align-items-stretch">
               <div class="post-item">
                 @if ($item->image)
                 <img src="{{ asset($item->image) }}" style="width:100%; max-height: 310px; object-fit: cover;" alt="...">
@@ -176,7 +176,7 @@
                 $link = $item->link ? $item->link : "";
                 $description = $item->description && strlen($item->description) > 440 ? substr($item->description, 0, 440) . "..." : $item->description;
             @endphp
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="col-lg-4 col-md-6 mt-3 d-flex align-items-stretch">
               <div class="post-item">
                 @if ($item->image)
                 <img src="{{ asset($item->image) }}" style="width:100%; max-height: 310px; object-fit: cover;" alt="...">
@@ -209,7 +209,7 @@
             <div class="row" data-aos="zoom-in" data-aos-delay="100">
     
               @foreach ($news as $item)
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+              <div class="col-lg-4 col-md-6 mt-3 d-flex align-items-stretch">
                 <div class="post-item">
                   @if ($item->image)
                   <img src="{{ asset($item->image) }}" style="width:100%; max-height: 310px; object-fit: cover;" alt="...">
