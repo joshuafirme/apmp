@@ -30,10 +30,13 @@ class ManagePageController extends Controller
    
         $file_path = Utils::fileUpdoad(request());
         $show_media = request()->show_media == 'on' ? 1 : 0;
-        $old_cache = json_decode(Cache::get('about_cache'));
 
+        $old_cache = json_decode(Cache::get('about_cache'));
         if (isset($old_cache->media)) {
-            Utils::removeFile($old_cache->media);
+            Utils::removeFile($old_cache->media);   
+        }
+        if ($file_path == "") {
+            $file_path = $old_cache->media;
         }
 
         $data = array(
