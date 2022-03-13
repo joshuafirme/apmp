@@ -121,7 +121,9 @@
             @endphp
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div class="post-item">
+                @if ($item->image)
                 <img src="{{ asset($item->image) }}" style="width:100%; max-height: 310px; object-fit: cover;" alt="...">
+                @endif
                 <div class="post-content">
 
                   <h3><a target="_blank" href="{{ $link }}">{{ $title }}</a></h3>
@@ -176,7 +178,9 @@
             @endphp
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div class="post-item">
+                @if ($item->image)
                 <img src="{{ asset($item->image) }}" style="width:100%; max-height: 310px; object-fit: cover;" alt="...">
+                @endif
                 <div class="post-content">
 
                   <h3><a target="_blank" href="{{ $link }}">{{ $title }}</a></h3>
@@ -207,7 +211,9 @@
               @foreach ($news as $item)
               <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                 <div class="post-item">
+                  @if ($item->image)
                   <img src="{{ asset($item->image) }}" style="width:100%; max-height: 310px; object-fit: cover;" alt="...">
+                  @endif
                   <div class="post-content">
                     @php
                         $title = $item->title ? $item->title : "";
