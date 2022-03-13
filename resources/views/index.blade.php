@@ -16,7 +16,9 @@
                 <div class="container">
                     <h2 class="animate__animated animate__fadeInDown">{{ $item->title }}</h2>
                     <p class="animate__animated animate__fadeInUp">{{ $item->description }}</p>
+                    @if ($item->link)
                     <a href="{{ $item->link }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                    @endif
                 </div>
                 </div>
             </div>
