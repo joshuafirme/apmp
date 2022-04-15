@@ -29,11 +29,7 @@ use App\Http\Controllers\ContactUsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', [LandingPageController::class, 'index']);
+Route::get('/', [LandingPageController::class, 'index']);
 
 Route::get('/download-file/{file_name}', [DownloadsController::class, 'downloadFile']);
 Route::get('/download', [DownloadsController::class, 'downloads_view']);

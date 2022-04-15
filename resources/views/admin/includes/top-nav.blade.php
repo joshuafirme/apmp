@@ -9,7 +9,7 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <a class="nav-link nav-icon search-bar-toggle " href="{{ url('/home') }}" target="_blank">View Website</a>
+    <a class="nav-link nav-icon search-bar-toggle " href="{{ url('/') }}" target="_blank">View Website</a>
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
