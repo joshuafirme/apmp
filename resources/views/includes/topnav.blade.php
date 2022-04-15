@@ -3,7 +3,7 @@
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="{{ url('/home') }}">Pamilya Muna <span>Party List</span></a></h1>
+        <h1><a href="{{ url('/') }}">Pamilya Muna <span>Party List</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
@@ -13,24 +13,24 @@
             @php
                 $header = json_decode(Cache::get('header_cache'));
             @endphp
-          <li><a class="nav-link scrollto" href="{{url('/home')}}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/')}}">Home</a></li>
           @if (isset($header->about) && $header->about == 'on')
-          <li><a class="nav-link scrollto" href="{{url('/home#about')}}">About</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/#about')}}">About</a></li>
           @endif
           @if (isset($header->advocacies) && $header->advocacies == 'on')
-          <li><a class="nav-link scrollto" href="{{url('/home#advocacies')}}">Advocacies</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/#advocacies')}}">Advocacies</a></li>
           @endif
           @if (isset($header->projects) && $header->projects == 'on')
-          <li><a class="nav-link scrollto " href="{{url('/home#projects')}}">Projects</a></li>
+          <li><a class="nav-link scrollto " href="{{url('/#projects')}}">Projects</a></li>
           @endif
           @if (isset($header->events) && $header->events == 'on')
-          <li><a class="nav-link scrollto " href="{{url('/home#events')}}">Events</a></li>
+          <li><a class="nav-link scrollto " href="{{url('/#events')}}">Events</a></li>
           @endif
           @if (isset($header->news) && $header->news == 'on')
-          <li><a class="nav-link scrollto " href="{{url('/home#news')}}">News</a></li>
+          <li><a class="nav-link scrollto " href="{{url('/#news')}}">News</a></li>
           @endif
           @if (isset($header->contact) && $header->contact == 'on')
-          <li><a class="nav-link scrollto" href="{{url('/home#contact')}}">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/#contact')}}">Contact</a></li>
           @endif
           <li class="dropdown"><a href="#"><span>Others</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

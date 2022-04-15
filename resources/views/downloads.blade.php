@@ -17,7 +17,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <h2>Downloads</h2>
               <ol>
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li>Downloads</li>
               </ol>
             </div>
